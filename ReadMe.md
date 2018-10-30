@@ -1,2 +1,2 @@
-This is my learning Note form daily work
+This is my learning Note from daily work
 by.zxp
