@@ -109,4 +109,7 @@ A heartbeat is one of the movement of your heart.
 # Mulitiplicity
 
 ---
-#transaction
+# transaction
+
+---
+# boundary
