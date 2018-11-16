@@ -62,7 +62,24 @@ Tuple扩展了pair的概念，拥有任意数量的元素
     * 保证同一时间内只有一个smart pointer可以指向该对象
     * 可以移交拥有权，对于避免资源泄露(resource leak)特别有用
 
-### Class shared_ptr
+### 5.2.1 Class shared_ptr
 shared_ptr目标就是：在其所指向的对象不再被需要之后(而非之前)，自动释放与对象相关资源
 
 #### 使用 shared_ptr
+* 接收单一pointer作为唯一实参的构造函数是explicit,所以对于字符串不能够使用赋值符号。
+* 使用便捷函数
+* 注意：**但凡容器，总是为传入的元素创建属于容器自己的拷贝**
+
+#### 定义一个deleter
+可以声明属于自己的deleter
+
+#### 对Array
+* 默认的shared_ptr提供的deleter调用的是delete，不是delete[]
+* 这时候 **必须定义自己的deleter
+* 也可使用unique_ptr提供的辅助函数作为deleter，期内调用delete[]**
+* 注意：unique_ptr允许只传递对应元素类型作为template实参，但shared_ptr不行
+
+#### 其他析构策略
+* 如果清理工作不仅仅删除内存，就必须明确给出自己的deleter
+* 注意：shared_ptr只提供`operator *`和 `operator ->`
+* 如果想访问内存必须使用get()
