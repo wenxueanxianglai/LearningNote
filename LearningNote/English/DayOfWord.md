@@ -113,3 +113,15 @@ A heartbeat is one of the movement of your heart.
 
 ---
 # boundary
+
+---
+# cheat
+
+---
+# mature
+
+---
+# ditch
+
+---
+# chase
