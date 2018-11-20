@@ -83,3 +83,22 @@ shared_ptr目标就是：在其所指向的对象不再被需要之后(而非之
 * 如果清理工作不仅仅删除内存，就必须明确给出自己的deleter
 * 注意：shared_ptr只提供`operator *`和 `operator ->`
 * 如果想访问内存必须使用get()
+
+### 5.2.2 Class bad_weak_ptr
+#### 不期望使用shared_ptr的情况
+* cyclic reference
+* 想明确共享但不愿拥有某对象
+
+#### 功能
+* 这个class建立起一个shared pointer，
+* 一旦最末一个该对象的shared pointer失去了拥有权
+* 任何weak pointer 都会自动成空
+
+#### 使用建议
+* weak_ptr只提供小量操作，
+  * 只能够用来创建、复制、赋值 weak pointer,
+  * 转换一个shared pointer
+  * 检查自己是否指向某对象
+* 不能使用* 和->访问 weak_ptr 指向的对象，而是必须另外建立一个 shared_ptr
+  * 这样可因此检查是否存在一个相应对象，如果不，操作抛出异常或者建立一个 empty shared pointer
+  * 当指向的对象正在被处理时，shared pointer无法被释放
