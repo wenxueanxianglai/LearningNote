@@ -102,3 +102,12 @@ shared_ptr目标就是：在其所指向的对象不再被需要之后(而非之
 * 不能使用* 和->访问 weak_ptr 指向的对象，而是必须另外建立一个 shared_ptr
   * 这样可因此检查是否存在一个相应对象，如果不，操作抛出异常或者建立一个 empty shared pointer
   * 当指向的对象正在被处理时，shared pointer无法被释放
+
+### 5.2.3 误用Shared Pointer
+shared_ptr 由于对象的相应资源往往被自动释放，当对象不再被使用时有可能出现问题
+
+#### 确保某对象只被一组 shared pointer 拥有
+
+### 5.2.4 细究 shared_ptr 和 weak_ptr
+#### 线程安全(Thread-Safe)的Shared Pointer接口
+* 一般而言 shared pointer 并非线程安全
