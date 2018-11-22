@@ -111,3 +111,57 @@ shared_ptr 由于对象的相应资源往往被自动释放，当对象不再被
 ### 5.2.4 细究 shared_ptr 和 weak_ptr
 #### 线程安全(Thread-Safe)的Shared Pointer接口
 * 一般而言 shared pointer 并非线程安全
+
+### 5.2.5 Class unique_ptr
+* C++11起开始有
+* 他是异常发生时可帮助避免资源泄露的 smart pointer
+* **独占式拥有** ： 他只确保一个对象和其相应资源只被一个pointer拥有
+* 资源释放情形：
+  * 一旦拥有者被销毁或变成empty
+  * 开始拥有另一个对象
+
+#### 函数的运作
+* 获得某些资源
+* 执行某些操作
+* 将取得的资源释放掉
+
+```C++
+void f()
+{
+  ClassA* ptr = new ClassA; //creat an object explicitly
+  ...                       //perform some operations
+  delete ptr;               //clean up(destroy the object explicitly)
+}
+```
+
+#### Class unique_ptr 的目的
+* unique_ptr 是 **其所指向对象** 的唯一拥有者
+* unique_ptr 的必要条件：它指向的对象只有一个拥有者
+
+#### 使用 unique_ptr
+* 不提供 pointer 的算术运算
+* 初始化要求：不允许以赋值语法将一个普通的pointer当做初值，只能直接 **初始化**
+* unique_ptr可为空
+* 使用release(), 获取 unique_ptr拥有的对象，并让 unique_ptr 放弃拥有权
+
+#### 转移 unique_ptr 的拥有权
+* 不能使用拷贝构造，必须要触发移动构造
+
+#### 源头和去处(Source and Sink)
+拥有权可转移意味着 unique_ptr 的一个用途: 函数可利用他们讲拥有前转移给其他函数
+* 函数是接收端
+  * unique_ptr 以 rvalue reference 作为函数实参传递
+  * 函数会取得 unique_ptr 的拥有权
+
+
+* 函数是供应端
+  * 当函数返回一个unique_ptr，其拥有权会转移至被调用端
+  * 在函数末尾时， 编译器应自动尝试加上move
+
+#### 对Array
+* 需要主动在之前面加数组符号
+* 但是不再提供 `*` 和 `->`操作符，提供[]
+* 不接受派生类型的Array
+
+#### 其他资源的deleter
+* 如果是个函数或者lambda 必须声明deleter类型为 `void(*)(*)`或`std::function<void(T*)>`,或者使用decltype
