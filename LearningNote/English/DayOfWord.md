@@ -125,3 +125,12 @@ A heartbeat is one of the movement of your heart.
 
 ---
 # chase
+
+---
+# occurence
+## 发生的事情；事件；[N-COUNT 可数名词]
+An occurence is something that happens.[Formal]
+* Complaints seemed to be an everyday occurence...
+  * 似乎每天都有投诉
+* The food queues have become a daily occurence across the country.
+  * 排队购买食品的长龙已成了全国各地每日可见的景象
