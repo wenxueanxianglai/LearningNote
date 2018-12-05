@@ -3,24 +3,24 @@
 ---
 ## Test 1
 ### 1. The magician moved his fingers quickly.
-* S + V + O + C
+* S + V + O
 * S: The magician
 * V: moved
 * O: his fingers
-* C: quickly
+* ~~
 
 ### 2. The police found the letter missing.
 * S + V + O + C
-* S: The police
+* S: police
 * V: found
-* O: the letter
+* O: letter
 * C: missing
 
 ### 3. The police found the missing letter.
 * S + V + O
-* S: The police
+* S: police
 * V: found
-* O: the missing letter
+* O: missing letter
 
 ### 4. He ordered himself a steak and a bottle of red wine.
 * S + V + O + O
@@ -36,10 +36,15 @@
 * O: dancing
 
 ### 6. The President has gone abroad on a visit.
-* S + V + O
-*
+* S + V
+* S: The President
+* V: has gone
 
 ### 7. That sounds like a good idea.
+* S + V + C
+* S: That
+* V: sounds
+* C: like a good idea
 
 ### 8. The box feels heavy.
 
