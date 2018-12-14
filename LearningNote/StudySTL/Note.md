@@ -189,8 +189,17 @@ adapter 适配器
 ## 6.2 容器(Container)
 分类：
 * Sequence container 序列式容器
+  * 是一种有序(ordered)集合，
+  * 其元素均有确凿的位置--取决于插入时机和地点，与元素值无关
+  * array、vector、deque、list 和 forward_list
 * Associative container 关联式容器
-*
+  * 是一种已排序(sorted)集合，元素位置取决于其value(或key)和给定的排序准则， 与插入次序无关
+  * set、multiset、map 和 multimap
+* Unordered (associative) container 无序容器
+  * 这是一种无序集合(unordered collection)
+  * 每个元素的位置无关紧要， **唯一重要的是其特定元素是否位于此集合内**
+  * 元素值或其安插顺序，都不影响元素的位置，而且元素位置可能随时间而改变
+  * unordered_set、unordered_multiset、unordered_map 和 unordered_multimap
 
 
 
