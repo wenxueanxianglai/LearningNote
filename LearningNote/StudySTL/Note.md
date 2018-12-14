@@ -165,3 +165,65 @@ void f()
 
 #### 其他资源的deleter
 * 如果是个函数或者lambda 必须声明deleter类型为 `void(*)(*)`或`std::function<void(T*)>`,或者使用decltype
+
+---
+---
+# Chapter 6 标准模板库
+STL 的一个根本特性：所有组件都可以针对任意类型运作
+
+从程序员的角度看：
+* 可使用不同需求的集合类(collection class)
+* 能够在这些集合类上运作的算法
+
+## 6.1 组件(Component)
+* Container 容器
+  * 用来管理某对象的集合
+* Iterator 迭代器
+  * 用来在一个对象集合(collection of objects)内便利元素
+  * 好处： 为所有各式各样的容器提供了一组很小的共同接口
+* Algorithm 算法
+  * 用来处理集合内的元素
+
+adapter 适配器
+
+## 6.2 容器(Container)
+分类：
+* Sequence container 序列式容器
+* Associative container 关联式容器
+*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0
