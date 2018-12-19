@@ -22,3 +22,6 @@
 # windows 下编译
 使用cmd重定向， 把compile 信息 重定向到一个文件中
 compile.bat > Info.txt
+
+
+# windows 属性表

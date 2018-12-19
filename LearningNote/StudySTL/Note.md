@@ -201,6 +201,43 @@ adapter 适配器
   * 元素值或其安插顺序，都不影响元素的位置，而且元素位置可能随时间而改变
   * unordered_set、unordered_multiset、unordered_map 和 unordered_multimap
 
+### 6.2.1 序列式容器(Sequence Container)
+* vector
+  * 将元素置于一个dynamic array中管理
+    * 在array尾部 **插入** 和 **移除** 元素都很快，插入中间，删除中间费时
+    * 可利用索引直接访问任何一个元素
+
+
+* Deque
+  * dynamic array
+    * 可 **向两端发展**
+    * 头尾安插元素都十分迅速
+
+
+* Array
+  * 在某个固定大小的array内管理元素
+    * 不可改变元素个数
+    * 建立时就指明其大小
+    * 支持随机访问
+
+
+* List
+  * 双向链表实现而成
+    * 不提供随机访问
+    * 在任意位置上执行安插或删除都非常迅速
+
+
+### 6.2.1 序列式容器(associative Container)
+通常由二叉树(binary tree)实现。  
+关联式容器主要差别在于：
+* 元素种类
+* 处理重复元素时的方式
+
+主要优点
+* 它能够找出一个具有特定value的元素。因为它具备对数复杂度  
+
+主要缺点：
+* 不能直接改动元素的value，因为会破坏元素的自动排序
 
 
 
