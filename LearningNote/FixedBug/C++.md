@@ -24,4 +24,9 @@
 compile.bat > Info.txt
 
 
-# windows 属性表
+## windows 属性表
+
+## 对于一个界面对象
+#### 必须的接口
+*  Init()  开始的时候
+*  
