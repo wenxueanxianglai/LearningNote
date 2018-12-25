@@ -30,3 +30,7 @@ compile.bat > Info.txt
 #### 需要添加必须的接口
 * 开始的时候 Init();
 * 关闭的时候 UnInit();
+
+
+## Qt删除多线程对象
+* 一定要使用 `deleteLater()`
