@@ -1,3 +1,4 @@
+
 ## 配色网站
 * http://zhongguose.com/
 * http://nipponcolors.com/
@@ -11,4 +12,4 @@
 * 四级 ： 248 202 63
 
 ## Web的分类
-![avatar](./web_pic/Web1-8.png)
+![分类](./web_pic/Web1-8.png)
