@@ -25,3 +25,8 @@ connect(m_Display->getTreeView(), SIGNAL(clicked(const QModelIndex &)), this, SL
 * 此时，需要修改权限。
 * 如果不修改权限，那么，就只能崩溃了
 * Win 10 默认C盘不可写
+
+## Qt某些技巧博客
+* [高级技巧](https://www.cnblogs.com/wenris/p/4447481.html)
+* [剖析Qt的事件机制原理](https://www.cnblogs.com/findumars/p/4700247.html)
+* [自定义view](https://www.cnblogs.com/lgxZJ/p/7587503.html)
