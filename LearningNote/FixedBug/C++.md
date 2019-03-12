@@ -133,3 +133,11 @@ bSave = true;
 一劳永逸，修改注册表
 *    1)在搜索栏中输入 regedit  ，打开注册表
 *    2) 删除项目：计算机\HKEY_CURRENT_USER\Software\ScooterSoftware\Beyond Compare 4\CacheId
+
+## wireshark抓包
+ip.addr  
+http  
+xml  
+contains  "(string)"
+<cusdk:GetUserDevByGroup>
+<cusdk:SearchDevice>
