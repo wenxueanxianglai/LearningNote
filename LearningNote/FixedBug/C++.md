@@ -154,7 +154,7 @@ contains  "(string)"
 ## 解决：
 #### excel的解决：
 * 设置cellformat的属性： **WrapText** 为真
-
+* `https://docs.microsoft.com/zh-cn/office/vba/api/excel.cellformat.wraptext`
 #### csv的解决
 * 设置将值 用双引号包裹住
 
