@@ -46,25 +46,25 @@ Qt事件将windows的消息 封装 成了事件
 ```
 #### 3.1.1 使用中对于当前事件的处理
 处理的代码写完之后，我们可以将这个事件 进行忽略 或者 继续传递下去
-```C++
-inline void accept() { m_accept = true; }
-inline void ignore() { m_accept = false; }
 
-//套入上面框架
-bool event(QEvent * e)
-{
-  if (e->type() == (自己想要的类型))
-  {
-     //
-     e->ignore();
-  }
-  else
-  {
-      return QWidget::event(e);  
-  }
+  ```C++
+  inline void accept() { m_accept = true; }
+  inline void ignore() { m_accept = false; }
 
-}
-```
+  //套入上面框架
+  bool event(QEvent * e)
+  {
+    if (e->type() == (自己想要的类型))
+    {
+       //
+       e->ignore();
+    }
+    else
+    {
+        return QWidget::event(e);  
+    }
+  }
+  ```
 
 #### 3.1 事件处理顺序
 ##### 3.1.1一般 组件事件处理与信号 顺序
