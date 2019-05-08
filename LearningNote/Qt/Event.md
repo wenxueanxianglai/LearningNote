@@ -117,4 +117,26 @@ bool TestEvent::eventFilter(QObject * obj, QEvent * e)
 ---
 ## 其他使用注意的地方
 #### 一个组件显示的事件顺序
-*
+
+```C++
+        Polish = 75,                            // widget is polished
+        Move = 13,                              // move widget
+        Resize = 14,                            // resize widget
+        Show = 17,                              // widget is shown
+        ShowToParent = 26,                      // widget is shown to parent
+        WindowActivate = 24,                    // window was activated
+        FocusIn = 8,                            // keyboard focus received
+        PolishRequest = 74,                     // widget should be polished
+        MetaCall =  43,                         // meta call event
+        Paint = 12,                             // paint widget
+```
+上述值得我们注意的几个顺序：
+```
+Move = 13,                              // move widget
+Resize = 14,                            // resize widget
+Show = 17,                              // widget is shown
+ShowToParent = 26,                      // widget is shown to parent
+Paint = 12,                             // paint widget
+```
+* 为什么要注意显示顺序？
+  * 有些操作是在显示后做的，例如：某些组件的显示隐藏，需要记录之前的状态，这时候在show之后做，就行了
