@@ -7,7 +7,6 @@
 ---
 ## 当前分页 大多都是 d_ptr q_ptr 相关
 
-
 ## 两个基础的模板
 ```C++
 template <typename T> static inline T *qGetPtrHelper(T *ptr) { return ptr; }
@@ -15,14 +14,18 @@ template <typename Wrapper> static inline typename Wrapper::pointer qGetPtrHelpe
 ```
 
 ## Q_DECLARE_PRIVATE
+### 定义
 ```C++
 #define Q_DECLARE_PRIVATE(Class) \
     inline Class##Private* d_func() { return reinterpret_cast<Class##Private * >(qGetPtrHelper(d_ptr)); } \
     inline const Class##Private* d_func() const { return reinterpret_cast<const Class##Private * >(qGetPtrHelper(d_ptr)); } \
     friend class Class##Private;
 ```
-### What is this
-这是一个
+### 使用
+这个在 API 头文件中使用
+
+### 展开示例
+
 
 ## Q_DECLARE_PRIVATE_D
 ```C++
@@ -39,15 +42,15 @@ template <typename Wrapper> static inline typename Wrapper::pointer qGetPtrHelpe
     inline const Class* q_func() const { return static_cast<const Class * >(q_ptr); } \
     friend class Class;
 ```
+## 使用
+一般在 API private 文件中使用
 
 ## Q_D
 ```C++
 #define Q_D(Class) Class##Private * const d = d_func()
 ```
-#### 为了什么？
-* 主要为了不改变导出的 C++ 类的大小
-* 信息隐藏
-* 保持头文件干净
+### 使用
+* 在实现文件中想要使用private时， 直接使用该参数
 
 
 ## Q_Q
@@ -55,7 +58,6 @@ template <typename Wrapper> static inline typename Wrapper::pointer qGetPtrHelpe
 #define Q_Q(Class) Class * const q = q_func()
 ```
 #### 为了什么？
-* 访问父类的公共接口
 
 
 ---
