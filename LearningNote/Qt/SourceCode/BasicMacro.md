@@ -21,10 +21,11 @@ template <typename Wrapper> static inline typename Wrapper::pointer qGetPtrHelpe
     inline const Class##Private* d_func() const { return reinterpret_cast<const Class##Private * >(qGetPtrHelper(d_ptr)); } \
     friend class Class##Private;
 ```
-### 使用
-这个在 API 头文件中使用
 
 ### 展开示例
+```C++
+Q_DECLARE_PRIVATE(Class)
+```
 
 
 ## Q_DECLARE_PRIVATE_D
@@ -34,6 +35,7 @@ template <typename Wrapper> static inline typename Wrapper::pointer qGetPtrHelpe
     inline const Class##Private* d_func() const { return reinterpret_cast<const Class##Private * >(Dptr); } \
     friend class Class##Private;
 ```
+####  d_ptr的 使用 函数
 
 ## Q_DECLARE_PUBLIC
 ```C++
@@ -42,24 +44,20 @@ template <typename Wrapper> static inline typename Wrapper::pointer qGetPtrHelpe
     inline const Class* q_func() const { return static_cast<const Class * >(q_ptr); } \
     friend class Class;
 ```
-## 使用
-一般在 API private 文件中使用
+##  q_ptr 的 使用 函数
 
 ## Q_D
 ```C++
 #define Q_D(Class) Class##Private * const d = d_func()
 ```
-### 使用
-* 在实现文件中想要使用private时， 直接使用该参数
+#### 简化使用 q_ptr
 
 
 ## Q_Q
 ```C++
 #define Q_Q(Class) Class * const q = q_func()
 ```
-#### 为了什么？
-
-
+#### 简化使用 q_ptr
 ---
 
 ## Q_ENUM
