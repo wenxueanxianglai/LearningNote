@@ -14,7 +14,9 @@ template <typename Wrapper> static inline typename Wrapper::pointer qGetPtrHelpe
 ```
 
 ## Q_DECLARE_PRIVATE
-### 定义
+* 提供了一组 d_func() 函数，这样 不管是 const 对象 还是非const对象 都可以使用
+* 这个一般在 API类中 使用， 这样构成了 class -> private class 的使用关系
+
 ```C++
 #define Q_DECLARE_PRIVATE(Class) \
     inline Class##Private* d_func() { return reinterpret_cast<Class##Private * >(qGetPtrHelper(d_ptr)); } \
@@ -22,9 +24,20 @@ template <typename Wrapper> static inline typename Wrapper::pointer qGetPtrHelpe
     friend class Class##Private;
 ```
 
-### 展开示例
+#### 展开示例
 ```C++
-Q_DECLARE_PRIVATE(Class)
+Q_DECLARE_PRIVATE(QListView)
+//-->  展开成：
+// d_ptr 在QObject中： QScopedPointer<QObjectData> d_ptr;
+inline QListViewPrivate* d_func() {
+  return reinterpret_cast<QListViewPrivate* > qGetPtrHelper(d_ptr);
+}
+
+inline const QListViewPrivate* d_func() const {
+  return reinterpret_cast<QListViewPrivate* > qGetPtrHelper(d_ptr);
+}
+
+friend class QListViewPrivate;
 ```
 
 
@@ -35,22 +48,40 @@ Q_DECLARE_PRIVATE(Class)
     inline const Class##Private* d_func() const { return reinterpret_cast<const Class##Private * >(Dptr); } \
     friend class Class##Private;
 ```
-####  d_ptr的 使用 函数
+
 
 ## Q_DECLARE_PUBLIC
+* 和上面的一样
+* 不同的是，这个在 private class 中使用, 构成了private class --> class 的使用关系
+
 ```C++
 #define Q_DECLARE_PUBLIC(Class)                                    \
     inline Class* q_func() { return static_cast<Class * >(q_ptr); } \
     inline const Class* q_func() const { return static_cast<const Class * >(q_ptr); } \
     friend class Class;
 ```
-##  q_ptr 的 使用 函数
+#### 展开示例
+```C++
+Q_DECLARE_PUBLIC(QListView)
+//-->  展开成：
+//QObjectData 中有 q_ptr: QObject * q_ptr;
+inline QListView* q_func() {
+  return static_cast<QListView* >(q_ptr);
+}
+
+inline const QListView* q_func() const{
+  return static_cast<QListView* >(q_ptr);
+}
+
+friend class QListView;
+```
 
 ## Q_D
+简化使用 d_ptr
 ```C++
 #define Q_D(Class) Class##Private * const d = d_func()
 ```
-#### 简化使用 q_ptr
+####
 
 
 ## Q_Q
@@ -85,7 +116,3 @@ Q_DECLARE_PRIVATE(Class)
 # define QT_BEGIN_NAMESPACE namespace QT_NAMESPACE {
 # define QT_END_NAMESPACE }
 ```
-
-
-
-##
