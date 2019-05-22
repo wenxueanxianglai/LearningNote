@@ -198,3 +198,6 @@ void QAbstractItemView::setModel(QAbstractItemModel *model)
     reset(); // kill editors, set new root and do layout
 }
 ```
+## visualRect 
+* 这里只是个虚函数
+* 返回index占据的视图的范围
