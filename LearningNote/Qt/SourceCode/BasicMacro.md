@@ -55,7 +55,7 @@ friend class QListViewPrivate;
 * 不同的是，这个在 private class 中使用, 构成了private class --> class 的使用关系
 
 ```C++
-#define Q_DECLARE_PUBLIC(Class)                                    \
+#define #define Q_DECLARE_PUBLIC(Class)      \
     inline Class* q_func() { return static_cast<Class * >(q_ptr); } \
     inline const Class* q_func() const { return static_cast<const Class * >(q_ptr); } \
     friend class Class;
