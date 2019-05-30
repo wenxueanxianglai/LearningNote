@@ -173,3 +173,12 @@ contains  "(string)"
 ## 解决：
 * 查找工程文件中的出错的.cpp
 * 删除当前.cpp
+
+---
+# 2019完美解决TeamViewer检测商用问题
+
+链接: https://pan.baidu.com/s/1ZXZn8W9y-7LuNfzkZ2ULnA 提取码: 26yu
+
+下载之后解压需要密码，文件名已包含密码。
+
+建议使用tv14版本，tv13版本好像用不了。
