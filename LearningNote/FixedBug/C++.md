@@ -175,10 +175,17 @@ contains  "(string)"
 * 删除当前.cpp
 
 ---
-# 2019完美解决TeamViewer检测商用问题
+## 2019完美解决TeamViewer检测商用问题
 
 链接: https://pan.baidu.com/s/1ZXZn8W9y-7LuNfzkZ2ULnA 提取码: 26yu
 
 下载之后解压需要密码，文件名已包含密码。
 
 建议使用tv14版本，tv13版本好像用不了。
+
+---
+# 图标的问题
+## 问题： 图标显示不出来
+## 解决： 图标大小有问题时，可以制作多个尺寸合一的ico
+
+---
