@@ -16,6 +16,14 @@
 ---
 ## 常用的命令（有什么）
 ### cd  进入某个目录
+```
+cd     显示当前目录
+cd ..  回到上级目录
+cd \   进入根目录
+cd /d d:\di  同时修改盘符
+
+
+```
 
 ### cls 清除屏幕内容
 
@@ -24,3 +32,17 @@
 `ping sz.tencent.com > a.txt`  将 ping 的内容 输入到 a.txt中
 
 ### ">>" 追加
+```
+ping sz.tencent.com > a.txt         rem 将ping的内容 输入到 a.txt中
+ping sz1.tencent.com >> a.txt       rem 将ping的内容追加到上面内容之后
+```
+
+### pause 暂停
+
+### echo
+```
+echo off 下一行开始不显示
+echo on 下一行开始显示
+echo 显示当前是什么状态
+@关闭当前行显示
+```
