@@ -198,6 +198,18 @@ void QAbstractItemView::setModel(QAbstractItemModel *model)
     reset(); // kill editors, set new root and do layout
 }
 ```
-## visualRect 
+## visualRect
 * 这里只是个虚函数
 * 返回index占据的视图的范围
+
+---
+
+## QAbstractItemView 的構造函數
+```C++
+//public
+explicit QAbstractItemView(QWidget *parent = 0);
+//protected
+QAbstractItemView(QAbstractItemViewPrivate &, QWidget *parent = 0);
+```
+
+###

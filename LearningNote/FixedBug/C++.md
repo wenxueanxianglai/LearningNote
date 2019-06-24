@@ -189,3 +189,48 @@ contains  "(string)"
 ## 解决： 图标大小有问题时，可以制作多个尺寸合一的ico
 
 ---
+```C++
+int getKeysCount(QString& path)
+{
+    QSettings errCodeIni( path, QSettings::IniFormat );
+    errCodeIni.setIniCodec( "UTF-8" );
+    errCodeIni.beginGroup( "ERROR" );
+
+    int nCount = errCodeIni.allKeys().count();
+    return nCount;
+}
+
+void setErrorCode(int nBegin, QString& path)
+{
+    QSettings errCodeIni( path, QSettings::IniFormat );
+    errCodeIni.setIniCodec( "UTF-8" );
+    errCodeIni.beginGroup( "ERROR" );
+    QStringList allErrorCodes = errCodeIni.allKeys();
+
+    int nEnd =  (nBegin + 1)* 50 < allErrorCodes.size() ? (nBegin + 1)* 50 : allErrorCodes.size();
+
+    for (int i = nBegin * 50; i < nEnd; ++i)
+    {
+        int er = allErrorCodes[i].toInt();
+        QString errDesc = errCodeIni.value( allErrorCodes[i], allErrorCodes[i] ).toString();
+        if (errDesc.isEmpty())
+        {
+            int i;
+            i = 99 ;
+        }
+     //   assert( !errDesc.isEmpty() );
+        g_mapCode2Desc[ er ] = errDesc;
+    }
+
+
+
+    //for( int i=nBegin; i< allErrorCodes.size() && nEnd; ++i )
+    //{
+    //    SetErrorCode(allErrorCodes, i, errCodeIni);
+
+
+    //    QString des = g_mapCode2Desc[ er ];
+    //    des;
+    //}
+}
+```
