@@ -34,6 +34,16 @@
 * path
 * fragment
 * query
+```
+ftp://tray:5uQQ_f@ftp.example.com:2021
+scheme: ftp
+authority:  tray:5uQQ_f@ftp.example.com:2021
+  user info:  tray:5uQQ_f@
+    user   :    tray
+    password:   5uQQ_f
+  host  :     ftp.example.com
+  port  :     2021
+```
 
 ### QUrlPrivate的属性]
 ```C++
