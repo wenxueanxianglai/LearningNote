@@ -11,7 +11,7 @@
 
 ## 需要知道的预备知识 URL：
 ### url 是什么？
-通用的认知是连接，点击这个url 我们就能进到其他地方
+通用的说就是链接，点击这个url 我们就能进到其他地方
 
 ### url 由哪几部分组成？
 1. protocol  Qurl里是scheme
@@ -108,5 +108,4 @@ void QUrl::setUrl(const QString &url, ParsingMode parsingMode)
     }
     d->setEncodedUrl(encodedUrl, StrictMode);
 }
-
 ```
