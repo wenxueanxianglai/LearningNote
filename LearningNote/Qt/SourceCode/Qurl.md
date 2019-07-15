@@ -102,7 +102,7 @@ void QUrl::setUrl(const QString &url, ParsingMode parsingMode)
         QString hostPart = tmp.left(start);
         QString otherPart = tmp.mid(start);
         encodedUrl = toPercentEncodingHelper(hostPart, ":/?#[]@!$&'()*+,;=")
-                   + toPercentEncodingHelper(otherPart, ":/?#@!$&'()*+,;=");
+                   + toPercentEncodingHelper(o therPart, ":/?#@!$&'()*+,;=");
     } else {
         encodedUrl = toPercentEncodingHelper(tmp, ABNF_reserved);
     }
