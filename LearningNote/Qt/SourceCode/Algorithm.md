@@ -16,22 +16,7 @@ inline InputIterator qFind(InputIterator first, InputIterator last, const T &val
     return first;
 }
 ```
-```C++
-template <typename InputIterator, typename T>
-inline InputIterator _Find(InputIterator First, InputIterator Last, const T& val)
-{
-  for( ; First != Last; ++First)
-  {
-    if (*First == Last) {
-      break;
-    }
-  }
-  return First;
 
-  while(First != Last &&  *First != val)
-    ++val;
-}
-```
 
 ```C++
 //STL
@@ -44,4 +29,23 @@ template<class _InIt,
 			break;
 	return (_First);
 	}
+```
+
+```C++
+template <typename InputIterator, typename T>
+inline InputIterator _Find(InputIterator First, InputIterator Last, const T& val)
+{
+  //method 1
+  for( ; First != Last; ++First)
+  {
+    if (*First == Last) {
+      break;
+    }
+  }
+  return First;
+
+  // method 2
+  while(First != Last &&  *First != val)
+    ++val;
+}
 ```
