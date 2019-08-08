@@ -99,6 +99,51 @@ template<class Ty>
   }
 
   ```
+* **_Construct** 也是个带下划线的模板函数，和上面一样
+	```C++
+	/* 同上，这是他的源码
+	template<class _Ty1,
+	class _Ty2> inline
+	void _Construct(_Ty1 _FARQ *_Ptr, _Ty2&& _Val)
+	{	// construct object at _Ptr with value _Val
+	void _FARQ *_Vptr = _Ptr;
+	::new (_Vptr) _Ty1(_STD forward<_Ty2>(_Val));
+	}
+
+	template<class _Ty1> inline
+	void _Construct(_Ty1 _FARQ *_Ptr)
+	{	// construct object at _Ptr with default value
+	void _FARQ *_Vptr = _Ptr;
+
+	::new (_Vptr) _Ty1();
+	}
+	*/
+
+	template<typename Ty1, typename Ty2>
+	void Func_Construct(Ty1 Ptr, Ty2 Val)
+	{
+		void* Vptr = Ptr;
+		::new(Vptr) Ty1(::std::forward<Ty2>(Val));		//这里进行了初始化，Ptr指向的对象进行了初始化
+	}
+
+	```
+
+* **_Destroy** 调用析构的函数
+```C++
+	/* 源码大概就长这样，很好懂
+	template<class _Ty> inline
+	void _Destroy(_Ty _FARQ *_Ptr)
+	{	// destroy object at _Ptr
+	_Ptr->~_Ty();
+	}
+	*/
+template<typename Ty> inline
+void Func_Destroy(Ty* Ptr)
+{
+	Ptr->~Ty();
+}
+
+```
 
 ```C++
 /* 同理 这里是源码
@@ -242,19 +287,65 @@ public:
   {	// construct by copying (do nothing)
   }
 
-  template<class Other>
+  template<typename Other>
   allocator(const allocator<Other>&) throw()
   {	// construct from a related allocator (do nothing)
   }
 
-  template<class Other>
+  template<typename Other>
   allocator<Ty>& operator=(const allocator<Other>&)
   {	// assign from a related allocator (do nothing)
     return (*this);
   }
   //--end.
 
-  
+	//-- begin: 这里是最重要的功能函数获取内存，以及释放内存
+	void deallocate(pointer Ptr, size_type)
+	{
+		::operator delete(Ptr);
+	}
+
+	pointer allocate(size_type Count)
+	{
+		return (Func_Allocate(Count, (pointer)0));			//这里调用之前的一个全局函数
+	}
+
+	pointer allocate(size_type Count, const void*)
+	{
+		return allocate(Count);											//这里调用了上面的函数 allocate
+	}
+	//--end
+
+	//-- begin: 这里进行初始化和销毁~
+	void construct(pointer Ptr, const Ty& Val)
+	{	// construct object at Ptr with value Val
+	  Func_Construct(Ptr, Val);
+	}
+
+	void construct(pointer Ptr, Ty&& Val)
+	{	// construct object at Ptr with value Val
+		::new ((void*)Ptr) Ty(::std::forward<Ty>(Val));
+	}
+
+	template<class Other>
+	void construct(pointer Ptr, Other&& Val)
+	{	// construct object at Ptr with value Val
+		::new ((void* )Ptr) Ty(::std::forward<Other>(Val));
+	}
+
+	void destroy(pointer Ptr)
+	{	// destroy object at Ptr
+			Destroy(Ptr);
+	}
+	//-- end
+
+
+	//-- begin: 获取能够存储的最大个数
+	size_t max_size() const throw()
+	{
+		size_t Count = (size_t)(-1) / sizeof(Ty);
+		return (0 < Count ? Count : 1);
+	}
 };
 
 
