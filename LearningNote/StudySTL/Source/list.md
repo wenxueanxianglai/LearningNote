@@ -1,2 +1,81 @@
 # list
 ---
+## list 在vs的位置
+```C++
+#include <list>
+```
+
+## list大致结构
+```C++
+/*
+//这个在xutility文件里定义
+typedef _Container_base12 _Container_base;    
+class _List_nod : public _Container_base
+class _List_val	: public _List_nod<_Ty, _Alloc>
+class list  : public _List_val<_Ty, _Ax> {};
+*/
+```
+
+## **_List_nod**
+```C++
+/* 这里就是源码，由于我不是太习惯读开头加各种下划线，所以就自己修改下了
+template<class _Ty,
+	class _Alloc>
+	class _List_nod
+		: public _Container_base
+	{	// base class for _List_val to hold storage
+public:
+	typedef typename _Alloc::template rebind<_Ty>::other _Alty;
+	typedef typename _Alty::size_type size_type;
+
+	struct _Node;
+	typedef _Node *_Nodeptr;	// _Node allocator must have ordinary pointers
+	typedef _Nodeptr& _Nodepref;
+
+	struct _Node
+		{	// list node
+		_Nodeptr _Next;	// successor node, or first element if head
+		_Nodeptr _Prev;	// predecessor node, or last element if head
+		_Ty _Myval;	// the stored value, unused if head
+
+	private:
+		_Node& operator=(const _Node&);
+		};
+
+ #if _ITERATOR_DEBUG_LEVEL == 0
+	_List_nod(_Alloc _Al)
+		: _Alnod(_Al), _Alval(_Al)
+		{	// construct allocators from _Al
+		}
+
+ #else    // _ITERATOR_DEBUG_LEVEL == 0
+	_List_nod(_Alloc _Al)
+		: _Alnod(_Al), _Alval(_Al)
+		{	// construct allocators and proxy from _Al
+		typename _Alloc::template rebind<_Container_proxy>::other
+			_Alproxy(_Alnod);
+		this->_Myproxy = _Alproxy.allocate(1);
+		_Cons_val(_Alproxy, this->_Myproxy, _Container_proxy());
+		this->_Myproxy->_Mycont = this;
+		}
+
+	~_List_nod()
+		{	// destroy proxy
+		typename _Alloc::template rebind<_Container_proxy>::other
+			_Alproxy(_Alnod);
+		this->_Orphan_all();
+		_Dest_val(_Alproxy, this->_Myproxy);
+		_Alproxy.deallocate(this->_Myproxy, 1);
+		this->_Myproxy = 0;
+		}
+ #endif   // _ITERATOR_DEBUG_LEVEL == 0
+
+	_Nodeptr _Myhead;	// pointer to head node
+	size_type _Mysize;	// number of elements
+
+	typename _Alloc::template rebind<_Node>::other
+		_Alnod;	// allocator object for nodes
+	_Alty _Alval;	// allocator object for element values
+	};
+*/
+```
