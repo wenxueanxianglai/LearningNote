@@ -78,4 +78,39 @@ public:
 	_Alty _Alval;	// allocator object for element values
 	};
 */
+
+//其实源码中有句注释这个基础类为 list_val 提供 存储
+template <typename Ty, typename Alloc>
+class List_nod : public Containter_base
+{
+public:
+  //这个rebind 在 allocator 定义了
+  typedef typename Alloc::template rebind<Ty>::other  Alty;
+  typedef typename Alty::size_type  size_type;
+
+  //-- begin 定义Node~
+  struct Node;                    //在这里先声明，真正定义在下面
+  typedef Node* Nodeptr;          //声明了Node的指针    PS：我习惯把*放在前面
+  typedef Nodeptr& Nodepref;      //声明 Node指针的 引用
+
+  struct Nodeptr      //这里源码也有翻译， list Node
+  {
+    Nodeptr Next;     //successor node后继指针，或者如果是头 指向第一个元素
+    Nodeptr Prev;     //predecessor node 前驱指针，或者如果是头 指向最后一个元素
+    Ty Myval;         // 存储 值， 如果是头 就不能用
+  }
+  //-- end.
+
+  //-- begin 构造函数 和 析构函数
+  List_nod(Alloc Al) : Alnod(Al), Alval(Al)
+  {
+    typename Alloc::template rebind<Container_proxy>::other Alproxy(Alnod);
+
+    this->MyProxy = Alproxy.allocate(1);
+
+  };
+  //-- end.
+
+}
+
 ```
