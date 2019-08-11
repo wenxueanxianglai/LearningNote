@@ -93,11 +93,14 @@ public:
   typedef Node* Nodeptr;          //声明了Node的指针    PS：我习惯把*放在前面
   typedef Nodeptr& Nodepref;      //声明 Node指针的 引用
 
-  struct Nodeptr      //这里源码也有翻译， list Node
+  struct Node      //这里源码也有翻译， list Node
   {
     Nodeptr Next;     //successor node后继指针，或者如果是头 指向第一个元素
     Nodeptr Prev;     //predecessor node 前驱指针，或者如果是头 指向最后一个元素
     Ty Myval;         // 存储 值， 如果是头 就不能用
+
+  private:
+    Node& operator = (const Node&);
   }
   //-- end.
 
@@ -107,6 +110,10 @@ public:
     typename Alloc::template rebind<Container_proxy>::other Alproxy(Alnod);
 
     this->MyProxy = Alproxy.allocate(1);
+
+    Cons_val(Alproxy, this->MyProxy, Container_proxy());  //初始化~ 这个函数在 xmemory
+
+    this->MyProxy->Mycont = this;
 
   };
   //-- end.
