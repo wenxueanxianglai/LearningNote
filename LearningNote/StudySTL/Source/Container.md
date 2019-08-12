@@ -12,7 +12,7 @@
 //listnod继承的类型在这里定义的
 typedef _Container_base12 _Container_base;
 typedef _Iterator_base12 _Iterator_base;
-
+/*
 // store pointer to _Container_proxy
 struct _Container_base12
 {
@@ -32,4 +32,5 @@ struct _Iterator_base12
   _Container_proxy *_Myproxy;
 	_Iterator_base12 *_Mynextiter;
 };
+*/
 ```
