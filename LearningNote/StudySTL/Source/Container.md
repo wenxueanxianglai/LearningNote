@@ -159,8 +159,103 @@ struct Container_proxy
 ---
 ## Iterator_base12
 ```C++
+// store links to container proxy, next iterator
+// 存储 proxy的关联  ，下一个iterator
 struct Iterator_base12
 {
 
+  //-begin 这俩属性  一个是proxy 一个是iterator
+  Container_proxy* Myproxy;
+  Iterator_base12* Mynextiter;
+  //-end
+
+public:
+  // -begin 构造析构等相关
+  // construct orphaned iterator  初始化一个孤儿？iterator 初始化一个单独的iterator
+  Iterator_base12() : Myproxy(0), Mynextiter(0)
+  {
+  }
+
+  Iterator_base12(const Iterator_base12& Right) : Myproxy(0), Mynextiter(0)
+  { //copy an iterator
+    * this = Right;
+  }
+
+  Iterator_base12& operator= (const Iterator_base12& Right)
+  { // assign an iterator
+    if(Myproxy != Right.Myproxy)
+      Adopt(Right.Myproxy->MyCont);
+
+    return (*this);
+  }
+
+  ~Iterator_base12()
+  {
+    //destroy the iterator
+    Lockit Lock();
+
+    Orphan_me();
+  }
+  // -end
+
+  //-- begin
+  void Clrcont()
+  {//disown owning container
+    Myproxy = 0;
+  }
+
+  const Container_base12* Getcont() const
+  {// get owning container
+    return (Myproxy == 0 ? 0 : Myproxy->MyCont);
+  }
+
+  Iterator_base12** Getpnext()
+  {
+    // get address of remaining iterator chain
+    return (&Mynextiter);
+  }
+  //-- end
+
+  // -- begin
+  void Adopt(const Container_base12* Parent)
+  {// adopt this iterator by parent
+    if (Parent != 0)
+    {
+      Container_proxy* Parent_proxy = Parent->Myproxy;
+      if (Myproxy != Parent_proxy)
+      {
+        Lockit Lock();
+        Orphan_me();
+
+        Mynextiter = Parent_proxy->Myfirstiter;
+        Parent_proxy->Myfirstiter = this;
+        Myproxy = Parent_proxy;
+      }  
+    }
+  }
+
+  void Orphan_me()
+  {
+    if (Myproxy != 0)
+    {
+      //单链表找到存放自己的指针，或者可以叫找到自己的上一个对象
+      Iterator_base12** Pnext = Myproxy->Myfirstiter;
+      while (*Pnext != 0 && *Pnext != this)
+      {
+        Pnext = &(* Pnext)->Mynextiter;
+      }
+
+      if(*Pnext == 0)
+      {
+        //出错了嘛~
+        DEBUG_ERROR;
+      }
+
+      * Pnext = Mynextiter;   //将自己的下一个指针赋值给自己的前驱
+      Mynextiter = 0;         // 自己的下一个设置为空，这时候 自己就孤立了~
+
+    }
+  }
+  // -- end
 };
 ```
