@@ -7,7 +7,7 @@
  #include <xutility>
  ```
 
- ## 大致结构
+ ## 1 大致结构
  ```C++
 //listnod继承的类型在这里定义的
 typedef _Container_base12 _Container_base;
@@ -34,9 +34,10 @@ struct Iterator_base12
 };
 
 ```
+![container类图](./pic/Container.png)
 
 ---
-## **_Container_base12**
+## 2 **_Container_base12**
 这个类的解释很清楚，存储Container_proxy的指针
 ```C++
 //这里我还是把头的下划线给去掉，
@@ -140,7 +141,7 @@ inline void Container_base12::Swap_all(Container_base12& Right)
 }
 ```
 ---
-## Container_proxy
+## 3 Container_proxy
 Container_proxy 很简单，仅仅存储了两个指针
 ```C++
 //store head of iterator chain and back pointer
@@ -157,7 +158,7 @@ struct Container_proxy
 ```
 
 ---
-## Iterator_base12
+## 4 Iterator_base12
 ```C++
 // store links to container proxy, next iterator
 // 存储 proxy的关联  ，下一个iterator
