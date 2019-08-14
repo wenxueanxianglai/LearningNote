@@ -1,11 +1,11 @@
 # list
 ---
-## list 在vs的位置
+## 1. list 在vs的位置
 ```C++
 #include <list>
 ```
 
-## list大致结构
+## 2. list大致结构
 ```C++
 /*
 //这个在xutility文件里定义
@@ -14,9 +14,16 @@ class _List_nod : public _Container_base
 class _List_val	: public _List_nod<_Ty, _Alloc>
 class list  : public _List_val<_Ty, _Ax> {};
 */
+
+// 这样看起来舒服点
+typedef Container_base12 Container_base;    
+class List_nod : public Container_base {};          //nod 继承的 是 Container_base12        
+class List_val	: public List_nod<Ty, Alloc> {};
+class list  : public List_val<Ty, Ax> {};
+
 ```
 
-## **_List_nod**
+## 3. **_List_nod**
 ```C++
 /* 这里就是源码，由于我不是太习惯读开头加各种下划线，所以就自己修改下了
 template<class _Ty,
@@ -79,6 +86,7 @@ public:
 	};
 */
 
+//------------------------- 这里是自己加的注释版 ------------------------------------------
 //其实源码中有句注释这个基础类为 list_val 提供 存储
 template <typename Ty, typename Alloc>
 class List_nod : public Containter_base
@@ -88,7 +96,7 @@ public:
   typedef typename Alloc::template rebind<Ty>::other  Alty;
   typedef typename Alty::size_type  size_type;
 
-  //-- begin 定义Node~
+  //---- begin 定义Node ----
   struct Node;                    //在这里先声明，真正定义在下面
   typedef Node* Nodeptr;          //声明了Node的指针    PS：我习惯把*放在前面
   typedef Nodeptr& Nodepref;      //声明 Node指针的 引用
@@ -102,11 +110,23 @@ public:
   private:
     Node& operator = (const Node&);
   }
-  //-- end.
+  //---- end. ----
 
-  //-- begin 构造函数 和 析构函数
+  // 重点
+  // ---- begin 这里记录下node 类中存储的属性 ----
+  Nodeptr Myhead;	// pointer to head nod
+  size_type Mysize;	// number of elements
+
+  //这里实际上引用的类型allocator< Node >
+  typename Alloc::template rebind<Node>::other    
+		Alnod;	// allocator object for nodes
+	Alty Alval;	// allocator object for element values
+  // ---- end. ----
+
+  //---- begin 构造函数 和 析构函数 ----
   List_nod(Alloc Al) : Alnod(Al), Alval(Al)
   {
+    //创建 Alloc<Container_proxy> Alproxy变量
     typename Alloc::template rebind<Container_proxy>::other Alproxy(Alnod);
 
     this->MyProxy = Alproxy.allocate(1);
@@ -116,8 +136,8 @@ public:
     this->MyProxy->Mycont = this;
 
   };
-  //-- end.
-  
+  //---- end. ----
+
 }
 
 ```
