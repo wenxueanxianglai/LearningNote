@@ -160,3 +160,22 @@ public:
 
 ```
 ## 4. **_list_val**
+```C++
+// base class for list to initialize storage
+template<class Ty, class Alloc>
+class List_val : public List_nod<Ty, Alloc>
+{
+public:
+  typedef List_nod<Ty, Alloc> Mybase;
+  typedef typename Mybase::Nodeptr Nodeptr;
+  typedef typename Mybase::Nodepref Nodepref;
+  typedef typename Alloc::template rebind<Ty>::other Alty;
+
+  typedef typename Alty::size_type size_type;
+  typedef typename Alty::difference_type difference_type;
+  typedef typename Alty::pointer pointer;
+  typedef typename Alty::const_pointer pointer;
+
+};
+
+```
