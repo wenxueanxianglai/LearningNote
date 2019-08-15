@@ -125,16 +125,20 @@ public:
 
   //---- begin 构造函数 和 析构函数 ----
   List_nod(Alloc Al) : Alnod(Al), Alval(Al)
-  {
-    //创建 Alloc<Container_proxy> Alproxy变量
-    typename Alloc::template rebind<Container_proxy>::other Alproxy(Alnod);
+  {  
+    //  创建 Alloc<Container_proxy> Alproxy变量 ~
+    typename Alloc::template rebind<Container_proxy>::other Alproxy(Alnod);   
 
-    this->MyProxy = Alproxy.allocate(1);
+    //  这里申请了Container_proxy 的内存
+    this->MyProxy = Alproxy.allocate(1);     
 
-    Cons_val(Alproxy, this->MyProxy, Container_proxy());  //初始化~ 这个函数在 xmemory
+    //  初始化~ 这个函数在 xmemory
+    Cons_val(Alproxy, this->MyProxy, Container_proxy());  
 
+    // 这里做出了关联
     this->MyProxy->Mycont = this;
 
+    // 所以nod本身的构造函数就只做了一件事： 和自己的proxy进行了关联
   };
   //---- end. ----
 
