@@ -130,18 +130,33 @@ public:
     typename Alloc::template rebind<Container_proxy>::other Alproxy(Alnod);   
 
     //  这里申请了Container_proxy 的内存
-    this->MyProxy = Alproxy.allocate(1);     
+    this->Myproxy = Alproxy.allocate(1);     
 
     //  初始化~ 这个函数在 xmemory
-    Cons_val(Alproxy, this->MyProxy, Container_proxy());  
+    Cons_val(Alproxy, this->Myproxy, Container_proxy());  
 
-    // 这里做出了关联
+    // 这里做出了关联 proxy 到 container的关联
     this->MyProxy->Mycont = this;
-
-    // 所以nod本身的构造函数就只做了一件事： 和自己的proxy进行了关联
   };
+
+  ~List_nod()
+  {
+    typename Alloc::template rebind<Container_proxy>::other Alproxy(Alnod);
+
+    this->Orphan_all();   // 解除了关联
+
+    Dest_val(Alproxy, this->Myproxy);   
+
+    Alproxy.dellocate(this->Myproxy, 1);  //这里只是为了使用这个方法，执行了Myproxy的析构
+
+    this->Myproxy = 0;
+
+  }
+
+
   //---- end. ----
 
 }
 
 ```
+## 4. **_list_val**
