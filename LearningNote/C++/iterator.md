@@ -32,7 +32,46 @@ ranges需满足下列性质
 * 也能够表示空区间[0, 0) 满足 0 - 0  = 0
 
 ---
-## C++线性查找
+## 2 C++线性查找
 ```C++
-template
+template<typename Iterator, typename T>
+Iterator find(Iterator first, Iterator last, const T& value)
+{
+    while (first != last && *first != value)
+        ++first;
+    return first;
+} 
 ```
+
+###  2.1 链表查找
+#### 链表一般遍历
+```C++
+struct int_node
+{
+    int val;
+    int_node* next;
+};
+
+int_node* p;
+for(p = list_head; p != NULL; p = p->next)
+{
+    // do something
+}
+```
+
+#### 如何适配到 STL里的查找
+解决方法：操作符重载(operatot overloading)
+* 定义一个template warpper class 
+* 适用于任何具有next指针的链表节点
+  ```C++
+  template <typename Node>
+  struct node_wrap
+  {
+      Node* ptr;
+
+      node_wrap(Node* p = 0) : ptr(p){}
+
+      Node& operator* () const { return *ptr; };
+      Node* operator* () const { reurn ptr; };
+  };
+  ```
