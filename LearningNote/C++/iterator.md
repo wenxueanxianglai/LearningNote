@@ -72,6 +72,6 @@ for(p = list_head; p != NULL; p = p->next)
       node_wrap(Node* p = 0) : ptr(p){}
 
       Node& operator* () const { return *ptr; };
-      Node* operator* () const { reurn ptr; };
+      Node* operator-> () const { reurn ptr; };
   };
   ```

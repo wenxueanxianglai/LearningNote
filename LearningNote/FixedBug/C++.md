@@ -234,3 +234,9 @@ void setErrorCode(int nBegin, QString& path)
     //}
 }
 ```
+
+## 查询日志 
+#### 查找具体的窗口
+1. 通过打印窗口信息 拿到 devID 和 chnID
+2. 在CU日志里搜索 DevID 找到调用 cmd， 通过 chnID 确认playerID 以及 vsid
+3. 通过player 找到 hMonitorWnd 
