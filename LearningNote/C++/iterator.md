@@ -24,3 +24,15 @@ ranges需满足下列性质
   * first出发后可达mid
   * mid出发后可达last
   * 那么[first, mid)与[mid，last)皆有效
+* 反之：若[first, mid)与[mid，last)皆有效，则[first, last)亦必有效
+
+#### 为什么要用？
+虽然奇怪，但是这样有助于避免相差一个(off-by-one)的错误。
+* [first, last) 的元素个数，就是 last - first
+* 也能够表示空区间[0, 0) 满足 0 - 0  = 0
+
+---
+## C++线性查找
+```C++
+template
+```
