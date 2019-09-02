@@ -11,7 +11,7 @@
   Defined Terms
 
 ---
-This chapter introduces most of the basic elements of C++: types, variables,expressions,statments, and functions.  
+This chapter  [introduces](### introduce)introduces most of the basic elements of C++: types, variables,expressions,statments, and functions.  
 这章介绍了 大多C++的基础元素：类型，变量，表达式，语句， 和函数。  
 Along the way, we'll briefly explain how to compile and execute a program.  
 一路上?(翻译成 期间 比较好？)，我们将会 简单地介绍 如何 编译和运行一个程序。  
