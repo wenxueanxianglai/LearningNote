@@ -1,4 +1,23 @@
-# Getting Started
+- [- revernue# Getting Started](#--revernue-getting-started)
+- [Contents](#contents)
+- [Words](#words)
+  - [introduce](#introduce)
+  - [element](#element)
+  - [most of](#most-of)
+  - [briefly](#briefly)
+  - [along th way](#along-th-way)
+  - [briefly](#briefly-1)
+  - [work through](#work-through)
+  - [be able to](#be-able-to)
+  - [assume](#assume)
+  - [detail](#detail)
+  - [transaction](#transaction)
+  - [copies](#copies)
+  - [the sale of](#the-sale-of)
+  - [identifier](#identifier)
+  - [from time to time](#from-time-to-time)
+  - [compute](#compute)
+  - [revernue](#revernue)
 ---
 ## Contents
   Section 1.1 Writing a Simple C++ Program
@@ -11,7 +30,7 @@
   Defined Terms
 
 ---
-This chapter  [introduce](#introduces) most of the basic elements of C++: types, variables,expressions,statments, and functions.  
+This chapter  [introduce](#introduce) most of the basic elements of C++: types, variables,expressions,statments, and functions.  
 这章介绍了 大多C++的基础元素：类型，变量，表达式，语句， 和函数。  
 Along the way, we'll briefly explain how to compile and execute a program.  
 一路上?(翻译成 期间 比较好？)，我们将会 简单地介绍 如何 编译和运行一个程序。  
