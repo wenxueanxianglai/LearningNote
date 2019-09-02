@@ -35,8 +35,8 @@ Each transaction contains three data elements:
 
 The first element is an ISBN(International Standard Book Number, a unique book identifier), the second is the number of copies sold, and the last is the price at which each of these copies was sold.  
 第一个元素是一个ISBN(国际标准书号， 一本书的唯一身份标识符)， 第二个 是 售出册数， 最后一个是 售出册数的平均价格。  
-From time to time, the bookstore owner reads this file and for each book 
-
+From time to time, the bookstore owner reads this file and for each book computes the number of copies sold, the total revenue from that book, and the average sale price.  
+有时， 书店店主会看这些记录， 计算每本书的销售册数，和 书的总收入， 和 书的平均售价
 
 
 ---
@@ -55,3 +55,6 @@ From time to time, the bookstore owner reads this file and for each book
 ### copies
 ### the sale of
 ### identifier
+### from time to time
+### compute
+### revernue
