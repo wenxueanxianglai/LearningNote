@@ -16,7 +16,10 @@ has widened from looking mostly at machine efficiency to devoting more attention
 ---
 ## words
 ### preface
+### countless
 ### previous
 ### edition
 ### matured
 ### widened
+### effifiency
+### devoting
