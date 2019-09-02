@@ -56,6 +56,27 @@ The first element is an ISBN(International Standard Book Number, a unique book [
 [From time to time](#from-time-to-time), the bookstore owner reads this file and for each book [computes](#compute) the number of copies sold, the total [revernue](#revernue) from that book, and the average sale price.  
 有时， 书店店主会看这些记录， 计算每本书的销售册数，和 书的总收入， 和 书的平均售价
 
+To be able to write this program, we need to cover a few basic C++ features.  
+为了有能力写这个程序， 我们需要 掌握 极少的 基础的C++特性.  
+In addition, we'll need to know how to compile and execute a program.  
+此外，我们也需要知道如何编译 和 运行一个程序。  
+
+Altough we haven't yet designed our program, it's easy to see that it must  
+尽管我们还没有开始设计我们的程序，但有些是显然必须的？：  
+  * Define variables
+  * Do input and output
+  * Use a data structure to hold the data
+  * Test whether two records have the same ISBN  
+  * Contain a loop that will process every record in the transactioin file  
+
+  * 定义变量
+  * 进行输入输出
+  * 使用一个数据结构去存储数据
+  * 测试两条记录是否有相同的ISBN
+  * 有一个循环，能够处理任何记录在这个交易文件里
+
+We'll start by reviewing how to solve these subproblems in C++ and then write our bookstore program.  
+我们将会开始 浏览?（介绍）在C++中 如何解决这些子问题，然后写我们的书店程序
 
 ---
 ## Words
@@ -75,3 +96,8 @@ The first element is an ISBN(International Standard Book Number, a unique book [
 ### from time to time
 ### compute
 ### revernue
+### cover
+### feature
+### in addition
+### reviewing
+### subproblems
