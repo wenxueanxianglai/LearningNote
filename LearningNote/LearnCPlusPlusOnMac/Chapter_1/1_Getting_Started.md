@@ -80,7 +80,20 @@ We'll start by reviewing how to solve these subproblems in C++ and then write ou
 
 ---
 ## Words
+<font color="pink">To</font>
+---
 ### introduce
+#### 1. [VERB] [V n] [V n into/to n] [be V-ed into/to n]
+To **introduce** something means to cause it to enter a place or exist in a system from the first time.
+* The Government has **introduced** a number of other money-saving moves...
+* I kept the birds indoors all winter and **introduced** them into an aviary the following June.
+* The word 'Pagoda' was **introduced** to Europe by the 17th century Portuguese.
+
+#### 2. [VERB] [V n to n]
+If you **introduce** someone to something , you cause them to learn about it or experience it for the first time.
+* He **introduced** us to the delights of natural food.
+
+---
 ### element
 ### most of
 ### along th way
