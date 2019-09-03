@@ -45,6 +45,16 @@ In this case, the return type of main is int and the return value is 0, which is
 在本例中， main的返回值 是 int， return 的值为 0， 0 是 int 类型。  
 
 
+**Note**  
+Note the semicolon at the end of the return statement.  
+注意 return 语句后面的分号.  
+Semicolons mark the end of most statements in C++.  
+在C++中 分号作为大多数语句的结尾的标记  
+They are easy to overlook but, when forgotten, can lead to mysterious compiler error messages.  
+这是很容易忽略的， 当被遗忘时， 就会导致 神秘的编译错误信息。  
+
+On most systems, the value returned from main is a status indicator.  
+大多数系统中， main函数返回的值 是一个状态指示。  
 
 
 
@@ -66,3 +76,8 @@ In this case, the return type of main is int and the return value is 0, which is
 ### curly brace
 ### terminates
 ### compatible
+### semicolon
+### mark
+### lead to
+### mysterious
+### indicator
