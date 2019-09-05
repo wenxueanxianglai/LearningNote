@@ -75,6 +75,7 @@ When the type of a variable named v is T, we often say that "v has type T" or, i
 
 ---
 ## Words
+<font color="pink"></font>
 ### one or more
 ### one of which
 ### definition

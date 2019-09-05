@@ -83,7 +83,8 @@ We'll start by reviewing how to solve these subproblems in C++ and then write ou
 <font color="pink"></font>
 ---
 ### introduce
-#### 1. [VERB] [V n] [V n into/to n] [be V-ed into/to n]
+Word forms: 3rd person singular present tense **introduces**, prsent participle **introducing**, past tense,past participle **introduced**
+#### 1. [VERB] [V noun] [V n into/to n] [be V-ed into/to n]
 <font color="pink">To **introduce** something means to cause it to enter a place or exist in a system from the first time.</font>
 * The Government has **introduced** a number of other money-saving moves... *\[VERB noun\]*
 * I kept the birds indoors all winter and **introduced** them into an aviary the following June.  *\[V n into/to n\]*
@@ -92,9 +93,13 @@ We'll start by reviewing how to solve these subproblems in C++ and then write ou
 #### 2. [VERB] [V n to n]
 <font color="pink">If you **introduce** someone to something , you cause them to learn about it or experience it for the first time.</font>
 * He **introduced** us to the delights of natural food. *\[VERB noun + to\]*
-
 ---
 ### element
+Word forms: plural **elements**
+#### 1. countable noun[usually plural]
+The different **elements** of something are the differen parts it contains.
+* The exchange of prisoners of war was one of the key elements of
+
 ### most of
 ### along th way
 ### briefly
