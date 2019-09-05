@@ -55,7 +55,22 @@ They are easy to overlook but, when forgotten, can lead to mysterious compiler e
 
 On most systems, the value returned from main is a status indicator.  
 大多数系统中， main函数返回的值 是一个状态指示。  
+A return value of 0 indicates success.  
+返回值为0表示成功。  
+A nonzero return has a meaning that is defined by the system.  
+一个非零的返回值 具有 系统定义 的 含义。  
+Ordinarily a nonzero return indicates what kind of error occurred.
+通常， 一个非零的返回值代表什么类型的错误出现。  
+**Key Concept:Types**
+Types are one of the most fundamental concepts in programming and a concept that we will come back to over and over in this Primer.  
+类型 是 编程中 众多 基础概念之一， 并且 这个概念 在这本书中 我们回来会不断地重复。  
+A type defines both the contents of a data element and the operations that are possible on those data.  
+一个类型 不仅定义了 一个数据元素的内容， 而且 定义了 对于这些数据 可能的操作。  
 
+The data our programs manipulate are stored in variables and every variable has a type.  
+我们程序使用的数据 被存储在变量中， 每个变量都有一个类型。  
+When the type of a variable named v is T, we often say that "v has type T" or, interchangeably, that "v is a T".  
+当一个 变量v 的类型 是 T， 我们通常说 v 有T 类型 或者 也可以说（那个是可替换的意思）v 是T类型
 
 
 ---
@@ -81,3 +96,9 @@ On most systems, the value returned from main is a status indicator.
 ### lead to
 ### mysterious
 ### indicator
+### Ordinarily
+### Concept
+### fundamental
+### over and over
+### manipulate
+### interchangeably
