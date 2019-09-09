@@ -114,9 +114,31 @@ Word forms: plural **elements**
 **Synonyms:** group, faction, clique, set
 
 ---
-### most of
+### most
+Most is often considered to be the superlative form of much and , many.
+#### 1. quantifier
+<font color="pink"> You use most to refer to the majority of a  group of things or people or the largest part of something.</font>
+* **Most of** the houses in the capital don't have piped water. *\[+of\]*
+* By stopping smoking you are undoing **most of** the damage smoking has caused.*\[+of\]*
+* Sadly, **most of** the house was destroyed by fire in 1828. *\[+of\]*
 
+<font color="pink">**Most** is also a determiner</font>
+* **Most** people think the Queen has done a good job during her reign.
+* **Most** companies are looking to sponsor students on specific courses.
 
+<font color="pink">**Most** is also a pronoun</font>
+* Seventeen civilians were hurt. Most are students who had been attending a party.
+* All of the rooms have private baths, and most have radios and TV.
+
+**Synonyms:** nearly all, the majority, the mass, almost all
+
+#### 2. adjective
+<font color="pink">You use **the most** mean a larger amount than anyone or anything else, or the largest amount possible.</font>
+* The President himself won the most votes.
+* The skippers get the most money, and after them the cooks.
+* Tom had the most authority of all.
+
+---
 ### along th way
 ### briefly
 ### work through
