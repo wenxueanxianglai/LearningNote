@@ -97,10 +97,26 @@ Word forms: 3rd person singular present tense **introduces**, prsent participle 
 ### element
 Word forms: plural **elements**
 #### 1. countable noun[usually plural]
-The different **elements** of something are the differen parts it contains.
-* The exchange of prisoners of war was one of the key elements of
+<font color="pink">The different **elements** of something are the differen parts it contains.</font>
+* The exchange of prisoners of war was one of the key **elements of** the U.N.'s peace plan. *\[+of\]*
 
+**Synonyms:** component, part, feature, unit
+
+#### 2. countable noun
+<font color="pink">A particular **element** of a situation, activity, or process is an important quality or feature that it has or needs.</font>
+* Fitness has now become an important **element** in out lives.
+
+#### 3. countable noun[usually plural]
+<font color="pink">When you talk about **elements** within a society or organization, you are referring to groups of prople who have similar, beliefs, or habits.</font>
+* ...criminal **elements** within the security forces.
+* ...the hooligan **element**
+
+**Synonyms:** group, faction, clique, set
+
+---
 ### most of
+
+
 ### along th way
 ### briefly
 ### work through
