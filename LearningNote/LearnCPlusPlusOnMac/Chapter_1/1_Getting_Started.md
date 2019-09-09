@@ -5,7 +5,7 @@
   - [element](#element)
   - [most of](#most-of)
   - [briefly](#briefly)
-  - [along th way](#along-th-way)
+  - [along the way](#along-the-way)
   - [work through](#work-through)
   - [be able to](#be-able-to)
   - [assume](#assume)
@@ -31,7 +31,7 @@
 ---
 This chapter  [introduce](#introduce) [most of](#most-of) the basic [element](#element) of C++: types, variables,expressions,statments, and functions.  
 这章介绍了 大多C++的基础元素：类型，变量，表达式，语句， 和函数。  
-[along th way](#along-th-way), we'll [briefly](#briefly) explain how to compile and execute a program.  
+[along the way](#along-the-way), we'll [briefly](#briefly) explain how to compile and execute a program.  
 一路上?(翻译成 期间 比较好？)，我们将会 简单地介绍 如何 编译和运行一个程序。  
 
 After having read this chapter and [worked through](#work-through) the exercises, you should [be able to](#be-able-to) write, compile, and execut simple programs.  
@@ -127,19 +127,23 @@ Most is often considered to be the superlative form of much and , many.
 * **Most** companies are looking to sponsor students on specific courses.
 
 <font color="pink">**Most** is also a pronoun</font>
-* Seventeen civilians were hurt. Most are students who had been attending a party.
-* All of the rooms have private baths, and most have radios and TV.
+* Seventeen civilians were hurt. **Most** are students who had been attending a party.
+* All of the rooms have private baths, and **most** have radios and TV.
 
 **Synonyms:** nearly all, the majority, the mass, almost all
 
 #### 2. adjective
 <font color="pink">You use **the most** mean a larger amount than anyone or anything else, or the largest amount possible.</font>
-* The President himself won the most votes.
-* The skippers get the most money, and after them the cooks.
-* Tom had the most authority of all.
+* The President himself won **the most** votes.
+* The skippers get **the most** money, and after them the cooks.
+* Tom had **the most** authority of all.
 
 ---
-### along th way
+### along the way
+#### phrase
+<font color="pink">If something happens **on the way** or **along the way**, it happens during the course of a particular event or process</font>
+* You may have to learn a few new skill **along the way**.
+
 ### briefly
 ### work through
 ### be able to
