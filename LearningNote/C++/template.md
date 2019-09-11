@@ -1,5 +1,9 @@
 # template
 ---
+## 编译时期
+#### 1. 第一阶段： 发生模板的定义点(point of definition)
+#### 2. 第二阶段： 发生它的每一个实例化的点(points of instantiation)
+
 ## Function template
 一个函数模板就是一个公式，用来生成针对于特定类型的函数版本
 
