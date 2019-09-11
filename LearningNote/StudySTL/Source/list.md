@@ -166,6 +166,7 @@ template<class Ty, class Alloc>
 class List_val : public List_nod<Ty, Alloc>
 {
 public:
+  // 先定义这些类型
   typedef List_nod<Ty, Alloc> Mybase;
   typedef typename Mybase::Nodeptr Nodeptr;
   typedef typename Mybase::Nodepref Nodepref;
@@ -176,6 +177,55 @@ public:
   typedef typename Alty::pointer pointer;
   typedef typename Alty::const_pointer pointer;
 
+  //----- begin 构造函数 和 析构----
+  List_val(Alloc Al = Alloc()) : Mybase(Al)
+  {
+    this->Mysize = 0;
+    this->Myhead =this->Alnod.allocate(1);
+    this->Nextnode(this->Myhead) = this->Myhead;
+    this->Prevnode(this->Myhead) = this->Myhead;
+  }
+
+  ~List_val()
+  {
+    this->Alnod.deallocate(this->Myhead, 1);
+  }
+  //----- end -----
+
+  //----- begin -----
+  static Nodepref Nextnode(Nodeptr Pnode)
+  {
+    return  ( (Nodepref)(*Pnode).Next );    //这里将指针强制转成了引用
+  }
+
+  static Nodepref Prevnode(Nodeptr Pnode)
+  {
+    return ( (Nodepref)(*Pnode).Next );
+  }
+
+  static reference Myval(Nodeptr Pnode)
+  {
+    return ( (reference)(*Pnode).Myval );
+  }
+  //----- end   -----
+
+  //----- begin -----
+  Nodeptr Buynode(Nodeptr Next, Nodeptr Prev, const Ty& Val)
+  {
+    Nodeptr Pnode = this->Alnod.allocate(1);
+
+    try{
+      this->Nextnode(Pnode) = Next;
+      this->Prevnode(Pnode) = Prev;
+      Cons_val(this->Alval, ::std::addressof(this->Myval(Pnode)), Val);
+    }catch(...){
+      this->Alnod.deallocate(Pnode, 1);
+      throw;
+    }
+
+    return (Pnode);
+  }
+  //----- end -----
 };
 
 ```
