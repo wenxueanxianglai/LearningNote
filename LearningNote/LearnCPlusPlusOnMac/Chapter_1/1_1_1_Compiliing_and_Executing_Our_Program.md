@@ -28,7 +28,28 @@ Whether you use a command-line interface or an IDE, most compilers expect progra
 不管你是用 命令行还是 IDE， 大多数编译器都希望 程序的源代码 存储在 一个或多个文件中。  
 Program files are normally referred to as a source files.  
 程序文件通常指的是 源文件。  
-On most system
+On most systems, the name of a source file end with a suffix, which is a period followed by one or more characters.  
+在大部分系统中，一个源文件名的最后带有一个后缀， 后缀为在点之后的一个或者多个字符  
+The suffix tells the system that the file is a C++ program.  
+这个后缀告诉 系统， 这个文件是个C++程序  
+Different compilers use different suffix conventions;  
+不同的编译器 使用不同的 后缀约定  
+the most common include .cc, .cxx, .cpp, .cp, and .C.
+通常大部分包括： .cc, .cxx, .cpp, .cp, 和.C  
+
+**Running the Compiler from the Command Line**  
+If we are using a Command-line interface, we will typically compile a program in a console window(such as a shell window on a UNIX system or a Command Prompt window on Windows).  
+如果我们正在使用 命令行界面， 我们通常会在 控制台窗口 编译一个程序(例如UNIX系统的shell窗口 或者 windows的命令提示符界面)  
+Assuming that our main program is in a file named prog1.cc, we might compile it by using a command such as  
+假设 我们的main程序 在 prog1.cc 文件里， 我们 通过使用命令 请求编译 如：  
+```
+$CC prog1.cc
+```
+where CC names the compiler and $ is the system prompt.  
+其中 CC 为 编译器， $ 是系统提示符。  
+
+
+
 
 ---
 ## Words
@@ -46,3 +67,7 @@ On most system
 ### expect
 ### referred
 ### referred to
+### suffix
+### period
+### typically
+### Prompt
