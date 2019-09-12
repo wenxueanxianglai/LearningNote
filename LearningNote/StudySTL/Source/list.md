@@ -225,7 +225,31 @@ public:
 
     return (Pnode);
   }
+
+  Nodeptr Buynode(Nodeptr Next, Nodeptr Prev)
+  {
+    Nodeptr Pnode = this->Alnod.allocate(1);
+
+    try{
+      this->Nextnode(Pnode) = Next;
+      this->Prevnode(Pnode) = Prev;
+      Uninitialized_default_fill_n(::std::addressof(this->Myval(Pnode)), 1, (Ty*)0, this->Alval);
+    }catch(...){
+      this->Alnod.deallocate(Pnode, 1);
+      throw;
+    }
+
+    return (Pnode);
+  }
   //----- end -----
 };
 
+```
+## list
+```C++
+template<class Ty, class Ax = allocator<Ty> >
+class list : public List_val<Ty, Ax>
+{
+
+};
 ```
