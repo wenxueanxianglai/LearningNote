@@ -47,8 +47,52 @@ $CC prog1.cc
 ```
 where CC names the compiler and $ is the system prompt.  
 其中 CC 为 编译器， $ 是系统提示符。  
+The compiler generates an executable file.
+编译器生成可执行文件  
+On a Windows system, that executable file is named prog1.exe.  
+在windows 操作系统里， 这个可执行文件名叫 prog1.exe.  
+UNIX compilers tend to put their executables in files named a.out.  
+UNIX 编译器 倾向于 让他们的可执行文件名叫 a.out.  
 
+To run an executable on Windows, we supply the executable file name and can omit the .exe file extension:  
+为了在Windows上运行一个可执行的文件， 我们提供 可执行文件名，我们也可以省略.exe文件扩展(就是后缀)  
+```
+$prog1
+```
+On some systems you must specify the file's location explicitly, even if the file is in the current directory or folder.  
+在某些系统中，你必须明确地指定文件文件的位置，即使这个文件 在当前目录或文件夹里  
+```
+$.\prog1
+```
+The "." followed by a backslash indicates that file is in the current directory.  
+.后面跟着的反斜杠 表示 这个文件在当前目录下。  
 
+To run an executable on UNIX, we use the full file name, including the file extension.  
+为了在UNIX上运行，我们使用文件名全名，包含文件名扩展部分。  
+```
+$a.out
+```
+If we need to specify the file's location, we'd use a "." followed by a forward slash to indicate that our executable is in the current directory:  
+如果我们需要去指定 文件的位置， 我们可以使用 ./ (翻译是 点后面跟着正斜杠) 表示 我们的可执行文件在 当前目录。  
+```
+$./a.out
+```
+The value returned from main is accessed in a system-dependent manner.  
+从 main 返回的值 是以系统相关的方式 访问  
+On both UNIX and Windows systems, after executing the program, you must issue an appropriate echo command.  
+在UNIX和Windows操作系统中， 在执行完程序之后， 你必须发出相应的 echo 命令  
+
+On UNIX systems, we obtain the status by writing  
+在UNIX操作系统中，我们 获取这个状态量 通过输入：
+```
+$echo $?
+```
+
+To see the status on a Windows system, we write  
+为了在windows操作系统看到这个状态量，我们输入:  
+```
+$echo %ERRORLEVEL%
+```
 
 
 ---
@@ -71,3 +115,15 @@ where CC names the compiler and $ is the system prompt.
 ### period
 ### typically
 ### Prompt
+### generates
+### executable
+### tend
+### supply
+### omit
+### specify
+### backslash
+### forward
+### slash
+### issue
+### appropriate
+### obtain
