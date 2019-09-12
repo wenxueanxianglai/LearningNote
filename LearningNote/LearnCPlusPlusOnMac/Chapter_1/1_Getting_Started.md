@@ -144,10 +144,49 @@ Most is often considered to be the superlative form of much and , many.
 <font color="pink">If something happens **on the way** or **along the way**, it happens during the course of a particular event or process</font>
 * You may have to learn a few new skill **along the way**.
 
+---
 ### briefly
+#### 1. adverb[ADVERB with verb]
+Something that happens or is done **briefly** happens or is done for a very shor period of time.
+* He smiled **briefly**
+* Guerillas captured and **briefly** held an important provincial capital.
+
+#### 2. adverb[ADVERB with verb]
+If you say or write something **briefly**, you use very few word or give very few details.
+* There are four basic alternatives; they are described **briefly** below.
+
+**Synonyms:** in outline, in brief, in passing, in a nutshell
+
+---
 ### work through
+
+---
 ### be able to
+#### phrase
+If you **are able to** do something, you have skills or qualities which make it possible for you to do it
+* The older child should **be able to** prepare a simple meal.
+* The company say **they're able to** keep pricing competitive.
+* They seemed **able to** work together very efficiently.
+
+#### phrase
+If you **are able to** do something, you have enough feedom, power, time, or money to do it.
+* You'll be able to read in peace.
+* Have you been able to have any kind of contact?
+* It would be nice to be able to afford to retire earlier.
+
+---
 ### assume
+Word forms:3rd person singular present tense **assumes**, present participle **assuming**, past tense, past participle **assume**
+#### 1. verb
+If you **assume that** something is true, you imagine that it is true, sometimes wrongly.
+* It is misconception to **assume that** the two continents are similar. *\[VERB that\]*
+* If the package is wrapped well, we **assume** the contents are also wonderful.  *\[VERB that\]*
+* If mistakes occured, they were **assumed to** be the fault of the commander on the spot. *\[be VERB-  ed to-infinitive\]*
+* "Today?"--"I'd" assume so, yeah.*\[V so\]*
+
+**Synonyms:** presume, think, beleve, expect.
+
+---
 ### detail
 ### transaction
 ### copies
