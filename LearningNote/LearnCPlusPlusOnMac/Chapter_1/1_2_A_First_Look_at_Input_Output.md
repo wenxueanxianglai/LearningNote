@@ -34,7 +34,8 @@ We typically use cerr, referred to as the standard error, for warning and error 
 
 Ordinarily, the system associates each of these objects with the window in which the program is executed.
 通常， 系统将 这些对象 的 每一个 与 执行程序的窗口相关联。  
-So, when we read from cin, data are read from the window in which the program is executing.  
+So, when we read from cin, data are read from the window in which the program is executing and when we write to cout , cerr, or clog, the output is written to the same window.    
+所以，当我们从cin 读取时， 数据从正在运行程序的窗口 读取。  
 
 
 
