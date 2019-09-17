@@ -23,8 +23,18 @@ To handle input, we use an object of type istream named cin(pronounced see-in).
 为了处理输入， 我们使用一个 输入流 cin 对象  
 This object is also referred to as the standard input.  
 这个对象也提供一个标准输入。  
-For output, we use an the standard output.  
-对于输出， 我们使用 标准输出。  
+For output, we use an ostream object named cout(pronounced see-out).  
+对于输出， 我们使用 名字叫 cout 的 ostream 对象  
+This object is also known as the standard output.
+这个对象我们也叫 标准输出。  
+The library also defines two other ostream objects, named cerr and clog(pronounced see-err and see-log, respectively).  
+这个库还定义了两个其他的标准输出对象， cerr 和 clog。  
+We typically use cerr, referred to as the standard error, for warning and error messages and clog for general information about the executiong of the program.  
+我们通常使用cerr 作为一个标准输出错误， 为了 警示 和错误信息， clog 作为运行这个程序时 普通信息  
+
+Ordinarily, the system associates each of these objects with the window in which the program is executed.
+通常， 系统将 这些对象 的 每一个 与 执行程序的窗口相关联。  
+So, when we read from cin, data are read from the window in which the program is executing.  
 
 
 
@@ -42,3 +52,7 @@ For output, we use an the standard output.
 ### consumed
 ### sequentially
 ### referred
+### typically
+### Ordinarily
+### associates
+### in which
