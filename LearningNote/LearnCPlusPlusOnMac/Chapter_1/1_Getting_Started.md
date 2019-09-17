@@ -186,6 +186,11 @@ If you **assume that** something is true, you imagine that it is true, sometimes
 
 **Synonyms:** presume, think, beleve, expect.
 
+#### 2. verb
+If someone assumes power or responsibility, they take power or responsibility.
+* My Cross will assume the role of Chief Executive with a team of four director *\[VERB noun\]*
+* If there is no president, power will be assumed by the most extremist forces. *\[VERB noun\]*
+
 ---
 ### detail
 ### transaction
