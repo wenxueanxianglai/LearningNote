@@ -19,7 +19,13 @@ The term stream is intended to suggest that the characters are generated, or con
 **Standard Input and Output Objects**  
 The library defines four IO objects.  
 标准库定义了四种IO对象。  
-To handle input
+To handle input, we use an object of type istream named cin(pronounced see-in).  
+为了处理输入， 我们使用一个 输入流 cin 对象  
+This object is also referred to as the standard input.  
+这个对象也提供一个标准输入。  
+For output, we use an the standard output.  
+对于输出， 我们使用 标准输出。  
+
 
 
 
@@ -35,3 +41,4 @@ To handle input
 ### generated
 ### consumed
 ### sequentially
+### referred
