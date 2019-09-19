@@ -235,8 +235,24 @@ void setErrorCode(int nBegin, QString& path)
 }
 ```
 
-## 查询日志 
+## 查询日志
 #### 查找具体的窗口
 1. 通过打印窗口信息 拿到 devID 和 chnID
 2. 在CU日志里搜索 DevID 找到调用 cmd， 通过 chnID 确认playerID 以及 vsid
-3. 通过player 找到 hMonitorWnd 
+3. 通过player 找到 hMonitorWnd
+
+---
+## auto 的 问题
+#### 现象：
+利用 auto 获取的 vector 和原有的 vector是不同的对象
+```C++
+// 此处 SubRecords 返回的是引用
+auto vctSrcSub = RecSrc.SubRecords();
+//这里相当于 新建了一个对象 vctSrcSub  并使用 上述引用初始化
+```
+
+#### 解决：
+```C++
+CRecordTimeRangeList& vctSrcSub = RecSrc.SubRecords();
+auto& vctSrcSub = RecSrc.SubRecords();
+```
