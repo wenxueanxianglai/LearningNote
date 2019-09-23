@@ -147,7 +147,7 @@ Most is often considered to be the superlative form of much and , many.
 ---
 ### briefly
 #### 1. adverb[ADVERB with verb]
-Something that happens or is done **briefly** happens or is done for a very shor period of time.
+Something that happens or is done **briefly** happens or is done for a very short period of time.
 * He smiled **briefly**
 * Guerillas captured and **briefly** held an important provincial capital.
 
@@ -159,6 +159,7 @@ If you say or write something **briefly**, you use very few word or give very fe
 
 ---
 ### work through
+to resolve(a problem, esp an emotional one), by thinking about it repeatedly and hence lessening its intensity either by gaining insight or by becoming bored by it.
 
 ---
 ### be able to
@@ -193,6 +194,9 @@ If someone assumes power or responsibility, they take power or responsibility.
 
 ---
 ### detail
+Word forms:plural, 3rd person singular present tense **details**, present participle **detailing**, past tence, past participle **detailed**
+
+---
 ### transaction
 ### copies
 ### the sale of
