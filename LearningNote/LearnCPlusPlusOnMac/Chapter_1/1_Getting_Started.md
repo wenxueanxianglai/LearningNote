@@ -195,6 +195,11 @@ If someone assumes power or responsibility, they take power or responsibility.
 ---
 ### detail
 Word forms:plural, 3rd person singular present tense **details**, present participle **detailing**, past tence, past participle **detailed**
+#### 1. countable noun
+The **details of** something are its individual features or elements.
+* The details of the plan are still being worked out. *\[ + of\]*
+* No details of the discussions have been given.
+
 
 ---
 ### transaction
