@@ -256,3 +256,6 @@ auto vctSrcSub = RecSrc.SubRecords();
 CRecordTimeRangeList& vctSrcSub = RecSrc.SubRecords();
 auto& vctSrcSub = RecSrc.SubRecords();
 ```
+
+#### 原因：
+auto 的知识 不牢固
