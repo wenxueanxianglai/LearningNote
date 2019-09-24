@@ -200,6 +200,15 @@ The **details of** something are its individual features or elements.
 * The details of the plan are still being worked out. *\[ + of\]*
 * No details of the discussions have been given.
 
+#### 2. plural noun[adjective NOUN]
+**Details** about someone or something are facts or pieces of information about them.
+* See the bottom of this page for details of how to apply for this exciting offer. *\[ + of\]*
+* Full details will be announced soon.
+
+#### 3. countable noun[oft adjective NOUN]
+A **detail** is minor point or aspect of something, as opposed to the central ones.
+* Only minor details now remain to be settled.
+
 
 ---
 ### transaction
