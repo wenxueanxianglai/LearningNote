@@ -35,8 +35,37 @@ We typically use cerr, referred to as the standard error, for warning and error 
 Ordinarily, the system associates each of these objects with the window in which the program is executed.
 通常， 系统将 这些对象 的 每一个 与 执行程序的窗口相关联。  
 So, when we read from cin, data are read from the window in which the program is executing and when we write to cout , cerr, or clog, the output is written to the same window.    
-所以，当我们从cin 读取时， 数据从正在运行程序的窗口 读取。  
+所以，当我们从cin 读取时， 数据从正在运行程序的窗口 读取。 当我们写入到cout,cerr 或者clog，输出被写入这些窗口中  
 
+**A Program That Uses the IO Library**  
+In our bookstore problem, we'll have several records that we'll want to combine into a single total.  
+在我们的书店程序中，我们将有几条 可以合并成一条总计的 记录  
+As a simpler, related problem, let's  look first at how we might add two numbers.  
+座位了更简单的相关问题，让我们首先看一下如何将两个数字相加。  
+Using the IO library, we can extend our main program to prompt the user to give us two numbers and then print their sum:  
+使用IO库，我们扩展我们的main程序 使得使用者 给我们两个数 然后打印他们的和  
+```C++
+#include <iostream>
+int main()
+{
+  std::cout << "Enter two numbers:" << std::endl;
+  int v1 = 0, v2 = 0;
+  std::cin >> v1 >> v2;
+  std::cout << "The sum of " << v1 << " and " << v2
+            << " is " << v1 + v2 << std:: endl;
+
+  return 0;
+}
+```
+This program starts by printing  
+程序开始于打印：  
+**Enter two numbers:**  
+on the user's screen and then waits for input from the user.  
+在用户屏幕上“Enter two numbers:”然后等待用户输入  
+If the user enters  
+如果用户输入：  
+**3 7**  
+followed by newline, then the program produces the following output:
 
 
 
