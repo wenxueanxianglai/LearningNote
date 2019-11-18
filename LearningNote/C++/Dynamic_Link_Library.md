@@ -40,5 +40,3 @@ Date: 2019-11-18
   #define OUT_API __declspec(dllimport)
   #endif
   ```
-
-### 
