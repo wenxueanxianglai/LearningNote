@@ -263,3 +263,35 @@ auto 的知识 不牢固
 ---
 ## 数据处理
 一种是传递当前消息 和 设备信息给线程，让线程通过消息识别处理流程，通过设备信息 关联 具体的某个设备。这种处理方法在线程类中实现。这种做法容易将设备结构体单纯地视为数据传来传去。
+
+---
+## >cl : 命令行 error D8016: “/ZI”和“/Gy-”命令行选项不兼容
+#### 场景：
+vs2013编译的 海康的demo，转换成 vs2017编译之后，直接就爆出来这个错误
+
+---
+## decodecardsdk.h(151): error C3690: 应该为字符串文本，但找到的是用户定义的字符串文本
+#### 场景：
+vs2013编译的 海康的demo，转换成 vs2017编译之后，直接就爆出来这个错误
+
+#### 原因：
+```C++
+#define DLLEXPORT_API  extern "C"__declspec(dllexport)
+```
+ 这里之前缺了一个空格
+
+#### 解决：
+添加空格
+```C++
+#define DLLEXPORT_API  extern "C"  __declspec(dllexport)
+```
+
+---
+## error C4839: 将类 "CFileException" 作为可变参数函数的参数的非标准用法
+#### 场景：
+vs2013编译的 海康的demo，转换成 vs2017编译之后，直接就爆出来这个错误
+```C++
+```
+
+#### 原因：
+![https://docs.microsoft.com/zh-cn/cpp/error-messages/compiler-warnings/compiler-warning-level-3-c4839?view=vs-2015](./fixed_pic/errorC4839.png)
