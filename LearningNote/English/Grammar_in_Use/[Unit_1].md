@@ -24,7 +24,14 @@ you |  | (you**'re not**   or   you **aren't**)
 they | | (they**'re not**   or   they **aren't**)
 
 ---
-### Exercises
+### C
+* that**'s** = that **is**
+* there**'s** = there **is**
+* here**'s** = here **is**
+
+
+---
+## Exercises
 #### 1.1 Write the shor form
  1. she is -> she's
  2. They are -> they're
