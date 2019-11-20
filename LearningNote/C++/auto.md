@@ -14,7 +14,7 @@ void print(int i) {
 	return;
 }
 
-// 
+//
 auto fudn(int i) -> decltype(&testfunct){
 	return print;
 }
@@ -41,3 +41,6 @@ auto ffun(double i) {
 
 
 ```
+
+decltype 对 普通的内置类型推导可以
+对于 函数的推导，普通的函数应使用 & ，这样看起来，对于普通函数来说，它就是对象，而不是指针。
