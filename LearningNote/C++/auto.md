@@ -14,6 +14,7 @@ void print(int i) {
 	return;
 }
 
+// 
 auto fudn(int i) -> decltype(&testfunct){
 	return print;
 }
