@@ -1,4 +1,30 @@
 # Unit 3 I am doing(present continuous)
+## grammar
+---
+### A
+The present continuous is :   
+**am/is/are** + do**ing**/eat**ing**/runn**ing**/writ**ing** etc.
+
+I | am(not) | -ing
+-|-|-
+he | **is**(not) |
+she | |
+it | |
+we | **are**(not) |
+you | |
+they | |
+
+---
+### B
+**am/is/are** + **-ing** = something is happening now:
+
+#### Spelling
+come -> coming | write->writing | dance->dancing
+-|-|-
+ru**n**->ru**nn**ing | si**t**->si**tt**ing | swi**m**->swi**mm**ing
+l**ie**->l**y**ing
+
+
 ---
 ## 3.1 What are these people doing? Use these verbs to complete the sentences
 1. She's eating an apple.
