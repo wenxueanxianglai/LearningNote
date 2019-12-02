@@ -24,3 +24,10 @@
 # 线程间共享数据
 ## 共享数据带来的问题
 * 共享数据修改，可能会导致某些问题的产生
+
+---
+# condition_variable
+## 限制
+* 只能和 unique_lock<std::mutex>
+* 执行wait,wait_for, wait_until会释放互斥量，并使线程**阻塞**
+* condition_variable被通知，线程被唤醒，且自动获得互斥
