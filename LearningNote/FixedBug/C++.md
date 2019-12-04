@@ -295,3 +295,10 @@ vs2013编译的 海康的demo，转换成 vs2017编译之后，直接就爆出�
 
 #### 原因：
 ![https://docs.microsoft.com/zh-cn/cpp/error-messages/compiler-warnings/compiler-warning-level-3-c4839?view=vs-2015](./fixed_pic/errorC4839.png)
+
+
+---
+## error C2440: “初始化”: 无法从“const char [4]”转换为“char *
+
+#### 原因
+在 C 中，字符串文字的类型是数组char，但在C++，它是数组const char
