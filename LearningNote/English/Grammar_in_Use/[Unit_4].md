@@ -1,4 +1,28 @@
 # are you doing ? (present continuous questions)
+## grammar
+---
+### A
+prositive
+
+I | am | doing
+-|-|-
+he | **is** | doing
+she |  | working
+it |  | going
+we | **are** | going
+you | | staying
+they | | studying .etc
+
+question
+
+am  | I | doing
+-|-|-
+**is** | he | working
+ | she | going
+ | it | raining
+**are** | we | staying
+   
+
 ---
 ## 4.1 Look at the pictures and write the questions
 1. Are you watching it?   -- No, you can turn it off.
