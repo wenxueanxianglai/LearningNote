@@ -2,7 +2,7 @@
 ## grammar
 ---
 ### A
-prositive
+#### prositive
 
 I | am | doing
 -|-|-
@@ -13,7 +13,7 @@ we | **are** | going
 you | | staying
 they | | studying .etc
 
-question
+#### question
 
 am  | I | doing
 -|-|-
@@ -21,7 +21,46 @@ am  | I | doing
  | she | going
  | it | raining
 **are** | we | staying
-   
+
+---
+### B
+#### Study the word order
+**is/are** + subject + **-ing**
+
+_ | Is | he | working today?
+-|-|-|-
+ | **Is** | Ben | **working** today ? (not is working Ben today? )
+Where | **are** | they | **going**?
+Where | **are** | those people | **going**?(not Where are going those people)
+
+---
+### C
+Yes, | I | am
+-|-|-
+ | he | **is**
+ | she |
+ | it |
+ | we | **are**
+ | you |
+ | they |
+
+No, | I'm | not
+-|-|-
+ | he**'s** |
+ | she**'s** |
+ | it**'s** |
+ | we**'re** |
+ | you**'re** |
+ | they**'re** |
+
+No, | he | isn't
+-|-|-
+ | she |
+ | it |
+ | we | **aren't** |
+ | you |
+ | they | 
+
 
 ---
 ## 4.1 Look at the pictures and write the questions
