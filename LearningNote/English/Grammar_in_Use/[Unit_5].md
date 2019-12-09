@@ -1,5 +1,39 @@
 # I do / work / like etc.(present simple)
 ---
+## grammar
+### A
+They **read** / he **likes** / I **work** ect. = the present simple
+
+#### Remember:
+he work**s** /**she** live**s** / **it** rain**s** etc.
+
+I/we you they | read | like | work | live  | watch | have
+-|-|-|-|-|-|-
+he/she/it | reads | likes | works | lives | watches | does | has  
+
+I **have** --> he/she/it **has**
+
+Spelling
+* **-es** after **-s** / **-sh** / **-ch**
+  * pas**s** --> pass**es**
+  * fini**sh** -->  finish**es**
+  * watc**h** --> watch**es**
+
+
+* **-y** -->**-ies**
+    * stud**y** --> stud**ies**
+    * tr**y** --> tr**ies**
+
+---
+### B
+We use the present simple for things that are true in general,  
+or for things that happen sometimes  or all the time
+
+---
+### C
+**always/never/often/usually/sometimes** + present simple
+
+---
 ## 5.1 Write these verbs with -s or -es
 1. (read) she reads
 2. (think) he thinks
