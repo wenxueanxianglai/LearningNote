@@ -49,7 +49,7 @@ We use **don't/ doesn't** + infinitive
 4. We work very hard.
   * We don't work very hard.
 5. He has a bath every day.
-  * He doesn't has a bath every day.
+  * He doesn't have a bath every day.
 6. You do the same thing every day.
   * you don't do the same thing every day.
 
