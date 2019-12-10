@@ -1,5 +1,44 @@
 # I don't...(present simple negative)
 ---
+## grammar
+### A
+The present simple negative is **don't/doesn't** + verb
+
+#### positive
+I | work
+-|-
+we | like
+you | do
+they | have
+**he** | **works**
+she | likes
+it | dose
+ | has
+
+#### negative
+I | don't (do not ) | work
+-|-|-
+we | | like
+you | | do
+they | | have
+**he** | **doesn't (does not)** | **drink**
+she | | watch
+it | | rain
+
+---
+### B
+Remember :
+* I/we/you/they don't ...
+* he/she/it doesn't ...
+
+---
+#### C
+We use **don't/ doesn't** + infinitive
+* don't **like**
+* doesn't **speak**
+* doesn't **do**
+
+---
 ## 6.1 Write the negative
 1. I play the piano very well.
   * I don't play the piano very well.
