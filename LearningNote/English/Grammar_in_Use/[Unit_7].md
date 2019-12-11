@@ -1,5 +1,42 @@
 # Do you ...? (present simple questions)
 ---
+## grammar
+### A
+We Use **do/does** in present simple questions:  
+positive_______________   question  
+
+I | work | | do | I | work?
+-|-|-|-|-|-
+we | **like** | | | we | **like?**
+you | **do** | | | you | **do?**
+they | **have** | | | they | **have?**
+he | **works** | | **does** | he | **work?**
+she | **likes** | | | she | **like?**
+it | **has** | | | it | **has?**
+
+---
+### Study the word order:
+#### do/does + subject + infinitive
+_ | Do | you | play | they guitar?
+-|-|-|-|-
+ | **Do** | your friends | **live** | near here?
+ | **Does** | Chris | **work** | on Sundays?
+ | **Does** | it | **rain** | a lot here?
+Where | **do** | your parents | **live?** |  
+How often | **do** | you | **wash** | your hair?
+What | **does** | this word | **mean?** |  
+How much | **does** | it | **cost** | to fly to Rome?
+
+#### Questions with always and usually:
+_ | DOes | Chris | always | work | on Sundays?
+-|-|-|-|-|-
+What | **do** | you | **usually** | **do** | at weekends?
+
+**What do** you **do** = What's your job?
+
+---
+
+---
 ## 7.1 Write questions with Do...? and Does...?
 1. I like chocolate. How about you?
   * Do you like chocolate?
