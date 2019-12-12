@@ -35,6 +35,10 @@ What | **do** | you | **usually** | **do** | at weekends?
 **What do** you **do** = What's your job?
 
 ---
+### Short answers
+Yes | I/we/you/they **do**. | _ | No, | I/we/you/they **don't**
+-|-|-|-|-
+ | he/she/it **dees** | _ | | he/she/it don't
 
 ---
 ## 7.1 Write questions with Do...? and Does...?
