@@ -39,3 +39,15 @@ class Blob
   std::shared_ptr< std::vector<T> > data;
 };
 ```
+---
+## 模板的可计算对象
+* 编译期常量
+* 可计算对象
+
+###  模板内部定义类型
+* 定义嵌套类 --- C++11 之后最好用using
+
+// C++标准要求使用推导类型前面必须使用typename关键字显示指明这是一个类型
+//using Result = typename PointerOf<typename PointerOf<T>::Result>::Result;
+
+C++标准不允许在类或者模板的内部定义模板的特化
