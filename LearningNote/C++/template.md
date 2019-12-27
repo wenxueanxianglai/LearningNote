@@ -51,3 +51,5 @@ class Blob
 //using Result = typename PointerOf<typename PointerOf<T>::Result>::Result;
 
 C++标准不允许在类或者模板的内部定义模板的特化
+
+编译器对模板的特化版本选择相当于是在做模式匹配
