@@ -13,17 +13,20 @@ git init
 ```
 
 ---
-### 添加版本库
+### 添加仓库
+#### 1. 添加 到暂存区
 ```bash
 git add readme.txt
 ```
+add 就是将这个文件 添加到暂存区
 
-### 提交到仓库
+#### 2. 提交到仓库
 
 ```bash
 git commit -m "wrote a readme file"
 ```
-git add 可以有很多次， git commit 相当于一次性把之前所有的add 打包提交到仓库
+git add 可以有很多次， git commit 相当于一次性把之前所有的add 打包提交到当前分支
+
 ---
 ### 查看仓库当前状态
 ```bash
@@ -34,6 +37,7 @@ git status
 ###  与仓库已经存储的内容 进行对比
 ```bash
 git diff readme.txt
+git diff HEAD -- readme.txt
 ```
 ---
 
