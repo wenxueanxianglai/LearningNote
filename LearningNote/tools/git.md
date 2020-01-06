@@ -35,3 +35,24 @@ git status
 ```bash
 git diff readme.txt
 ```
+---
+
+### 版本回退
+#### 1. 查看版本
+```bash
+git log
+git log --pretty=oneline    #简单地变成一行，只有 id和message
+```
+#### 2. 版本回退
+```bash
+git reset --hard HEAD^     # 回退至上个版本
+git reset --hard HEAD^^    # 回退至上上个版本
+git reset --hard HEAD~100  # 回退至上100个版本
+git reset --hard c083459   # 跳转至这个版本
+```
+
+### 查看使用过得命令
+```bash
+git reflog
+```
+---
