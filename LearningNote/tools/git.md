@@ -31,7 +31,7 @@ git status
 ```
 如果本地仓库的文件有某些变动没有 commit 则会提示
 
-###  与仓库已经存储的 进行对比
+###  与仓库已经存储的内容 进行对比
 ```bash
 git diff readme.txt
 ```
