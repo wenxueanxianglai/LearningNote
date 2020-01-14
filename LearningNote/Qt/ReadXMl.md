@@ -76,4 +76,5 @@ TS
   * set of All - set of Chinese
     * set of English
 3. 剩余无法进行的 看看能不能进行模糊匹配吧？ --> 这个可以先不做直接输出
-  * set of other
+  * set of All - set of Chinese - set of English
+    * set of other
