@@ -12,6 +12,7 @@
 2. 进行对比
 3. 导出日志
 
+---
 ## 详细步骤
 ### 读取文件
 #### 文件类型 ：xml
@@ -79,6 +80,7 @@ TS
   * set of All - set of Chinese - set of English
     * set of other
 
+---
 ## 导出日志
 ### 导出几种日志
 #### 第一层处理： 日志导出
