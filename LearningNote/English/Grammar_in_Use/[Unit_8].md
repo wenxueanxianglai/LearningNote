@@ -1,5 +1,49 @@
 # I am doing(present continuous) and I do (present simple)
 ---
+## grammar
+### B
+Present continuous(**I am doing**) = now, at the time of speaking.  
+```
+                I'm doing
+----------------------------------------------
+past              now                 future
+```
+* Please be quiet. **I'm** work**ing**(not I work)
+* Tom **is** hav**ing** a shower at the moment. (not Tom has)
+* Take an umbrella with you. **It's** rain**ing**.
+* You can turn off the television. **I'm** not watch**ing** it.
+* Why are you under the table?  What **are** you do**ing**?
+
+
+---
+
+### C
+present simple(**I do**) = in general, all the time or sometimes
+```
+                  I do
+----------------------------------------------
+past              now                 future
+```
+* I **work** every day from 9 o'clock to 5:30.
+* Tom **has** a shower every morning.
+* It **rains** a lot in winter.
+* I **don't watch** TV very often.
+* What **do** you usually **do** at weekends?
+
+---
+### D
+We do not use these verbs in the present continuous(**I am -ing**)
+```
+like    want    know    understand    remember
+prefer  need    mean    believe       forget
+```
+Use only the present simple with these verbs(I **want**/ **do you like?** etc)
+* I'm tired. I **want** to go home.(not I'm wanting)
+* '**Do** you **know** that girl?' 'Yes, but I **don't remember** her name'
+* I **don't understand** What **do** you **mean**?
+
+
+---
 ## 8.1 Answer the questions about the pictures
 1.  * Does He take photographs? Ye, he does.
   * Is he takeing a photographs. No, he isn't.
