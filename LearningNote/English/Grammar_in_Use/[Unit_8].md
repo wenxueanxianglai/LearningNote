@@ -62,18 +62,18 @@ Use only the present simple with these verbs(I **want**/ **do you like?** etc)
   * What do they do? they are teachers.
 
 ## 8.2 Complete the sentences with am/is/are or do/don't/doesn'
-1. Excuse me, do you speak English?
-2. 'Where's Kate?' 'I don't know.'
-3. What's funny? Why are you laughing?
-4. "What does your sister do?" "She's a dentist."
-5. It is raining. I don't want to go out in the rain.
-6. "Where are you from? " "Canada."
-7. How much does it cost to stay at this hotel? Is it expensive?
-8. Steve is a good tennis player, but he don't play very often.
+1. Excuse me, **do** you speak English?
+2. 'Where's Kate?' 'I **don't** know.'
+3. What's funny? Why **are** you laughing?
+4. "What **does** your sister do?" "She's a dentist."
+5. It **is** raining. I **don't want** to go out in the rain.
+6. "Where **are** you from? " "Canada."
+7. How much **does** it cost to stay at this hotel? Is it expensive?
+8. Steve is a good tennis player, but he **don't** play very often.
 
 ## 8.3 Put the verb in the present continuous or the present simple.
-1. Excuse me, do you speak English?
-2. "Where's Tom?" "He's having aa shower."
+1. Excuse me, **do you speak** English?
+2. "Where's Tom?" "**He's having** a shower."
 3. I don't watch TV very often.
 4. Listen! Somebody is singing.
 5. Sarah is tired. she want to go home now.
