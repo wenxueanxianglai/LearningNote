@@ -74,15 +74,15 @@ Use only the present simple with these verbs(I **want**/ **do you like?** etc)
 ## 8.3 Put the verb in the present continuous or the present simple.
 1. Excuse me, **do you speak** English?
 2. "Where's Tom?" "**He's having** a shower."
-3. I don't watch TV very often.
-4. Listen! Somebody is singing.
+3. **I don't watch** TV very often.
+4. Listen! Somebody **is singing.**
 5. Sarah is tired. she want to go home now.
-6. How often do you use your car? Every day?
-7. "Excuse me, but you are siting in my seat" "Oh, I'm sorry."
-8. I'm sorry, I don't understand. Can you speak more slowly?
-9. It's late. I'm going home now. do you come with me?
-10. What time is your father finish work every day?
-11. You can turn off the radio. I'm not listening to it.
-12. "Where's Paul?" "In the Kitchen. He is cooking something."
-13. Mark not usually drive to work. He usually walk.
-14. Su don't like coffee. she prefer tea.
+6. How often **do you use** your car? Every day?
+7. "Excuse me, but **you are siting** in my seat" "Oh, I'm sorry."
+8. I'm sorry, **I don't understand.** Can you speak more slowly?
+9. It's late. **I'm going** home now. **do you come** with me?
+10. What time **is your father** finish work every day?
+11. You can turn off the radio. **I'm not listening** to it.
+12. "Where's Paul?" "In the Kitchen. **He is cooking** something."
+13. Mark **not usually drive** to work. He usually walk.
+14. Su **don't like** coffee. she prefer tea.
