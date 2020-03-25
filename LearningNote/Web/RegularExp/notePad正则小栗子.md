@@ -30,3 +30,27 @@
 ```
 结果呈现：
 ![](./pic/Regular_after.png)
+
+
+# 删除日志中的不必要项
+## 1. 场景
+```
+18148.03/24 17:02:51.049 \I [tid:21472][CStreamRecver::OnInputStream] handle=034D14C0,dwPlayID=1,nUniplayId=0,encode=106,frameid=1262,timestamp=226800,ssrc=14172,datesize=151,video[w704,h576,type1,rate244]
+```
+类似于上述格式的日志有一堆，但只想要datesize(这里应该是data)
+
+## 2. 解决
+介于notepad正则有长度限制， 可以分多段操作
+### 2.1
+先匹配"18148.03/24 17:02:51.049 \\I"
+```
+"^\d+\.\d+/\d+ \d+:\d+:\d+\.\d+ \\I "
+```
+
+### 2.2
+在匹配 ```[tid:21472][CStreamRecver::OnInputStream]```
+```
+"^\d+\.\d+/\d+ \d+:\d+:\d+\.\d+ \\I \[tid:\d+\]\[CStreamRecver::OnInputStream\] "
+```
+
+### 2.3
