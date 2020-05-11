@@ -8,3 +8,5 @@
 POD ： Plain Old Data 缩写
 
 ### 什么是平凡类型(TrivialType)
+* 可平凡复制
+* 默认构造
