@@ -19,3 +19,7 @@ POD ： Plain Old Data 缩写
 * 没有引用类型的非静态数据成员
 * 所有非静态成员和基类自身也是标准布局
 * 没有虚函数，虚基类
+
+
+
+http://cseweb.ucsd.edu/~ricko/rt_lt.rule.html
