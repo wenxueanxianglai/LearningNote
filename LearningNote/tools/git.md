@@ -68,3 +68,10 @@ git reflog
 ```
 git switch -c dev
 ```
+
+### 查看分支
+git branch
+
+### 切换分支
+git checkout
+git checkout --track origin/[branch name] //当本地分支没有当前分支时，切换当前分支，并在本地创建名称一样的分支
