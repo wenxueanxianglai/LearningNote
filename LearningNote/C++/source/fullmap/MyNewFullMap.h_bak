@@ -1,0 +1,140 @@
+#pragma once
+#include <string>
+#include <map>
+#include <set>
+#include "cms/ospext/ospext.h"
+#include "uplinkservice.h"
+#include "sqliteDb.h"
+#include <mutex>
+#include <list>
+
+enum class GBTypeCode : u16 {
+	em_Dvr = 111,
+	em_Nvr = 112,
+	em_IPC = 132,
+
+	em_unKnow
+};
+
+
+//////////////////////////////////////////////////////////////////////////
+// lock
+template<typename SemLockType>
+struct lock_ground
+{
+public:
+	explicit lock_ground(SemLockType& mut) : m_mutex(mut) {
+		m_mutex.Lock();
+	}
+
+	~lock_ground() noexcept {
+		m_mutex.UnLock();
+	}
+
+	lock_ground(const lock_ground&) = delete;
+	lock_ground& operator=(const lock_ground&) = delete;
+private:
+	SemLockType& m_mutex;
+};
+
+using lock_guard_CXSemLock = lock_ground<CXSemLock>;
+
+// 持久化
+class CGBCodeManger
+{
+private:
+	CGBCodeManger() : m_pGBTableDb(nullptr) { Init(); }
+	~CGBCodeManger() {}
+public:
+	static CGBCodeManger& Inst();
+	static int GetResultCallback(void* NotUsed, int argc, char** argv, char** azColName);
+
+	void AllowGbId(const string& strDomainId, u32 dwTypeCode, string& strGbId);
+	bool GetDevGbid(const string& strProtoId, string& strGbId);
+
+	// DB operator
+	bool CreateGbTableDb(const string& strPath, const string& strTableName);
+	bool LoadGbidFromDb();
+
+	bool AddDevGbidToDb(const string& strProtoId, const string& strGbId);
+	bool DeleteDevGbidFromDb(const string& strProtoId);
+	bool ModifyDevGbidToDb(const string& strProtoId, const string& strGbId);
+
+private:
+	void Init();
+	std::string getSnKeyStr(GBTypeCode emCode);
+	int GetResultImp(void* NotUsed, int argc, char** argv, char** azColName);
+
+private:
+	sqlite3* m_pGBTableDb;			// db handle
+	std::string m_strGBTableName;
+
+	std::map<GBTypeCode, u32> m_mapTypeCodeSn;		
+	//std::map<std::string, std::string> m_mapPrid2DevId;// key : 协议内部id，value : gbid
+	CStrMap<std::string> m_mapPrid2DevId;			
+	std::mutex m_mutex;
+};
+
+//////////////////////////////////////////////////////////////////////////
+class CMyFulDeviceMap
+{
+	CMyFulDeviceMap();
+	~CMyFulDeviceMap();
+
+public:
+	static CMyFulDeviceMap& Inst();
+	static const int c_syncstate_syncing = 0;//正在同步
+	static const int c_syncstate_resync = -1;//重新同步
+	static const int c_syncstate_syncover = 1;//同步结束
+
+public:
+	const CStrMap<TDeviceFullInfo>& GetAllDevice() { return m_mapPid2PuInfo; }
+	std::list<TDeviceFullInfo*> GetChildDevices(const std::string& parentId);
+
+	const TDeviceFullInfo* GetParentDevices(const std::string& protoId);
+
+	void AddDevice(const std::string& protoId, const TDeviceFullInfo &tDeviceInfo);
+	void DelDevice(const std::string& protoId);
+
+	void UpdateDevStatus(const std::string& protoId, const bool bOnline);
+
+	bool IsProtoIdExist(const std::string& protoDevId);		// Dev Exist
+
+	void SetCacheFullDeviceStatus(int nStatus);
+	int GetCacheFullDeviceStatus();
+
+	void SetMaxEncChnNum(u32 dwMaxEncChnNum);
+	bool IsEncChnNumOutOfRange();
+
+private:
+	// 维护父子关系表
+	bool Insert(const std::string& parentId, const std::string& protoId);
+	std::list<std::string> Delete(const std::string& parentId,  const std::string& protoId);
+	bool Update(const std::string& protoId, const std::string& OldparentId, const std::string& NewparentId);
+
+	std::list<std::string> GetChilds(const std::string& parentId);
+
+private:
+	CStrMap<TDeviceFullInfo> m_mapPid2PuInfo;
+	std::map<std::string, std::set<std::string>> m_mapParent2Child;		// key : TDeviceFullInfo.parentId, value: TDeviceFullInfo.protoId
+
+	CXSemLock m_semLock;
+	int m_nCacheFullDeviceStatus;
+	u32 m_dwMaxEncChnNum;
+	u32 m_dwCurEncChnNum;
+};
+
+/*
+ 上面构成父子关系的说明：
+	2020-6-20 14:48:51 by zxp
+
+按照TDeviceFullInfo，个人认为是protoID 为国标ID， 而deviceId 与 parentID构成了父子关系。
+但是在 restinterface这里我们把protoId当成了下级上报的过来的deviceId，把parentId赋值给parent。
+这时候上下出现了一点分歧。
+
+目前这个字段还是很重要，还不能随便修改了，所以就按照现在的情况去做： 
+	protoId 与parentId构成父子关系
+	devid为gbid
+
+
+ */

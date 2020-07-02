@@ -1,0 +1,495 @@
+#include "MyNewFullMap.h"
+#include "os_dependence.h"
+#include "cms/ospext/osplog.h"
+#include "config.h"
+
+CGBCodeManger & CGBCodeManger::Inst()
+{
+	static CGBCodeManger __static_CGBCodeManger;
+	return __static_CGBCodeManger;
+}
+
+int CGBCodeManger::GetResultCallback(void* NotUsed, int argc, char** argv, char** azColName)
+{
+	return CGBCodeManger::Inst().GetResultImp(NotUsed, argc, argv, azColName);
+}
+
+std::string CGBCodeManger::getSnKeyStr(GBTypeCode emCode)
+{
+	switch (emCode)
+	{
+	case GBTypeCode::em_Dvr: return "DvrSnKey";
+	case GBTypeCode::em_Nvr: return "NvrSnKey";
+	case GBTypeCode::em_IPC: return "IPCSnKey";
+	default:
+		return "SnKey";
+	}
+}
+
+void CGBCodeManger::AllowGbId(const string & strDomainId, u32 dwTypeCode, string & strGbId)
+{
+	if (strDomainId.empty())
+	{
+		return;
+	}
+
+	auto sn = m_mapTypeCodeSn.find(static_cast<GBTypeCode>(dwTypeCode));
+	if (sn == m_mapTypeCodeSn.end())
+	{
+		GLOBELOG(ERROR_LEV, "AllowGbId dwTypeCode [%d] isn't correct var!\n", dwTypeCode);
+		return;
+	}
+	
+	string strSnKey = getSnKeyStr(static_cast<GBTypeCode>(dwTypeCode)); // "SnKey";//使用SnKey将分配GBID的Sn号读写到Db中存储
+	
+	if (sn->second == 0)
+	{
+		string strSnValue;
+		bool bRet = GetDevGbid(strSnKey, strSnValue);
+		if (!bRet)
+		{
+			strSnValue = i2str(sn->second);
+			AddDevGbidToDb(strSnKey, strSnValue);
+		}
+		else
+		{
+			sn->second = atoi(strSnValue.c_str());
+		}
+	}
+
+	string strDomain = strDomainId;
+	strDomain[10] = '\0';
+	u32 dwFourteenth = strDomainId[13] - '0';
+
+	char szId[24];
+
+	sprintf(szId, "%s%03u%u%06u", strDomain.c_str(), (u32)dwTypeCode, (u32)dwFourteenth, sn->second);
+
+	sn->second = (++sn->second) % 9999999;
+
+	strGbId = szId;
+
+	ModifyDevGbidToDb(strSnKey, i2str(sn->second));
+}
+
+bool CGBCodeManger::CreateGbTableDb(const string& strPath, const string& strTableName)
+{
+	string strDbPath = strPath + "PridToGbid.db";
+	sqlite3 *pDb = CreateSqliteDb(strDbPath);
+	if (pDb == NULL)
+	{
+		return false;
+	}
+	m_pGBTableDb = pDb;
+
+	bool bRet = CreateGBTable(m_pGBTableDb, strTableName);
+	if (!bRet)
+	{
+		GLOBELOG(ERROR_LEV, "CreateGBTable:[%s] fail!\n", strTableName.c_str());
+		return false;
+	}
+	m_strGBTableName = strTableName;
+	return true;
+}
+
+bool CGBCodeManger::LoadGbidFromDb()
+{
+	if (m_pGBTableDb == NULL)
+	{
+		return false;
+	}
+
+	bool bRet = SelectItem(m_pGBTableDb, m_strGBTableName, GetResultCallback);
+	if (!bRet)
+	{
+		GLOBELOG(ERROR_LEV, "LoadGbidFromDb m_strGBTableName:[%s] fail!\n", m_strGBTableName.c_str());
+		return false;
+	}
+	return true;
+}
+
+bool CGBCodeManger::GetDevGbid(const string & strProtoId, string & strGbId)
+{
+	bool bFind = false;
+	
+	{
+		std::lock_guard<std::mutex> lk(m_mutex);
+		std::string* pGbId = m_mapPrid2DevId.Find(strProtoId);
+		if (pGbId)
+		{
+			strGbId = *pGbId;
+			bFind = true;
+		}
+	}
+
+	return bFind;
+}
+
+bool CGBCodeManger::AddDevGbidToDb(const string & strProtoId, const string & strGbId)
+{
+	if (m_pGBTableDb == NULL)
+	{
+		return false;
+	}
+
+	bool bRet = AddItem(m_pGBTableDb, m_strGBTableName, strProtoId, strGbId);
+	if (!bRet)
+	{
+		GLOBELOG(ERROR_LEV, "AddDevGbidToDb ProtoId:[%s] fail!\n", strProtoId.c_str());
+		return false;
+	}
+
+	{
+		std::lock_guard<std::mutex> lk(m_mutex);
+		m_mapPrid2DevId[strProtoId] = strGbId;
+	}
+
+	return true;
+}
+
+bool CGBCodeManger::DeleteDevGbidFromDb(const string & strProtoId)
+{
+	if (m_pGBTableDb == NULL)
+	{
+		return false;
+	}
+
+	bool bRet = DeleteItem(m_pGBTableDb, m_strGBTableName, strProtoId);
+	if (!bRet)
+	{
+		GLOBELOG(ERROR_LEV, "DeleteDevGbidFromDb ProtoId:[%s] fail!\n", strProtoId.c_str());
+		return false;
+	}
+
+	{
+		std::lock_guard<std::mutex> lk(m_mutex);
+		std::string* pDeviceId = m_mapPrid2DevId.Find(strProtoId);
+		if (pDeviceId)
+		{
+			m_mapPrid2DevId.Erase(strProtoId);
+		}
+	}
+
+	return true;
+}
+
+bool CGBCodeManger::ModifyDevGbidToDb(const string & strProtoId, const string & strGbId)
+{
+	if (m_pGBTableDb == NULL)
+	{
+		return false;
+	}
+
+	bool bRet = ModifyItem(m_pGBTableDb, m_strGBTableName, strProtoId, strGbId);
+	if (!bRet)
+	{
+		GLOBELOG(ERROR_LEV, "ModifyDevGbidToDb ProtoId:[%s] fail!\n", strProtoId.c_str());
+		return false;
+	}
+
+	{
+		std::lock_guard<std::mutex> lk(m_mutex);
+		m_mapPrid2DevId[strProtoId] = strGbId;
+	}
+
+	return true;
+}
+
+void CGBCodeManger::Init()
+{
+	m_mapTypeCodeSn.insert(std::make_pair(GBTypeCode::em_Dvr, 0));
+	m_mapTypeCodeSn.insert(std::make_pair(GBTypeCode::em_Nvr, 0));
+	m_mapTypeCodeSn.insert(std::make_pair(GBTypeCode::em_IPC, 0));
+}
+
+int CGBCodeManger::GetResultImp(void * NotUsed, int argc, char ** argv, char ** azColName)
+{
+	string strProtoId;
+	string strGbId;
+	for (int i = 0; i < argc; i++)
+	{
+		if (strcmp(azColName[i], "Protoid") == 0)
+		{
+			strProtoId = argv[i];
+		}
+		if (strcmp(azColName[i], "Gbid") == 0)
+		{
+			strGbId = argv[i];
+		}
+	}
+
+	std::lock_guard<std::mutex> lk(m_mutex);
+	m_mapPrid2DevId[strProtoId] = strGbId;
+
+	return 0;
+}
+
+CMyFulDeviceMap::CMyFulDeviceMap()
+{
+	m_nCacheFullDeviceStatus = c_syncstate_resync;
+	m_dwMaxEncChnNum = 10000;
+	m_dwCurEncChnNum = 0;
+
+}
+
+CMyFulDeviceMap::~CMyFulDeviceMap()
+{
+	
+}
+
+CMyFulDeviceMap & CMyFulDeviceMap::Inst()
+{
+	static CMyFulDeviceMap __Static_CMyFulDeviceMap;
+	return __Static_CMyFulDeviceMap;
+}
+
+std::list<TDeviceFullInfo*> CMyFulDeviceMap::GetChildDevices(const std::string & parentId)
+{
+
+	lock_guard_CXSemLock lk(m_semLock);
+	std::list<TDeviceFullInfo*> lstRet;
+
+	auto lst = GetChilds(parentId);
+	for (auto& it : lst)
+	{
+		TDeviceFullInfo* ptDeviceMapInfo = m_mapPid2PuInfo.Find(it);
+		if (ptDeviceMapInfo)
+		{
+			lstRet.push_back(ptDeviceMapInfo);
+		}
+	}
+
+	return lstRet;
+}
+
+const TDeviceFullInfo * CMyFulDeviceMap::GetParentDevices(const std::string & protoId)
+{
+	lock_guard_CXSemLock lk(m_semLock);
+	TDeviceFullInfo* ptDeviceMapInfo = m_mapPid2PuInfo.Find(protoId);
+	if (ptDeviceMapInfo)
+	{
+		TDeviceFullInfo* ptParentMapInfo = m_mapPid2PuInfo.Find(ptDeviceMapInfo->parentId);
+		if (ptParentMapInfo)
+		{
+			return ptParentMapInfo;
+		}
+	}
+
+	return nullptr;
+}
+
+void CMyFulDeviceMap::AddDevice(const std::string & protoId, const TDeviceFullInfo & tDeviceInfo)
+{
+	// 塞入管理
+	{
+		lock_guard_CXSemLock lk(m_semLock);
+
+		TDeviceFullInfo* ptDeviceMapInfo = m_mapPid2PuInfo.Find(protoId);
+		if (ptDeviceMapInfo)
+		{
+			Update(protoId, ptDeviceMapInfo->parentId, tDeviceInfo.parentId);
+
+			*ptDeviceMapInfo = tDeviceInfo;
+		}
+		else
+		{
+#ifdef LICENSE
+			if (m_dwCurEncChnNum >= m_dwMaxEncChnNum)
+			{
+				GLOBELOG(ERROR_LEV, "License control m_dwCurEncChnNum:[%d] >= m_dwMaxEncChnNum:[%d],AddDevice fail!\n", m_dwCurEncChnNum, m_dwMaxEncChnNum);
+				return;
+			}
+#endif
+			m_mapPid2PuInfo.Insert(protoId, tDeviceInfo);
+			m_dwCurEncChnNum++;
+
+			Insert(tDeviceInfo.parentId, protoId);
+		}
+	}
+	
+	// 持久化
+	if (!g_cConfig.m_bEnableDevUp)
+	{
+		CGBCodeManger::Inst().AddDevGbidToDb(tDeviceInfo.protoId, tDeviceInfo.deviceId);
+	}
+}
+
+void CMyFulDeviceMap::DelDevice(const std::string & protoId)
+{
+	lock_guard_CXSemLock lk(m_semLock);
+	TDeviceFullInfo* ptDeviceInfo = m_mapPid2PuInfo.Find(protoId);
+
+	std::list<std::string> lst;
+	if (ptDeviceInfo)
+	{
+		lst = std::move(Delete(ptDeviceInfo->parentId, ptDeviceInfo->protoId));
+	}
+
+	for (auto& it : lst)
+	{
+		TDeviceFullInfo* ptToDel = m_mapPid2PuInfo.Find(it);
+		if (ptToDel)
+		{
+			m_mapPid2PuInfo.Erase(it);
+			m_dwCurEncChnNum--;
+		}
+
+		// 持久化
+		if (!g_cConfig.m_bEnableDevUp)
+		{
+			CGBCodeManger::Inst().DeleteDevGbidFromDb(it);
+		}	
+	}
+
+}
+
+void CMyFulDeviceMap::UpdateDevStatus(const std::string & protoId, const bool bOnline)
+{
+	lock_guard_CXSemLock lk(m_semLock);
+	TDeviceFullInfo* pDeviceInfo = m_mapPid2PuInfo.Find(protoId);
+	if (pDeviceInfo)
+	{
+		pDeviceInfo->status = bOnline;
+	}
+}
+
+bool CMyFulDeviceMap::IsProtoIdExist(const std::string & protoDevId)
+{
+	lock_guard_CXSemLock lk(m_semLock);
+	bool bFind = m_mapPid2PuInfo.Exist(protoDevId);
+	return bFind;
+}
+
+void CMyFulDeviceMap::SetCacheFullDeviceStatus(int nStatus)
+{
+	m_nCacheFullDeviceStatus = nStatus;
+}
+
+int CMyFulDeviceMap::GetCacheFullDeviceStatus()
+{
+	return m_nCacheFullDeviceStatus;
+}
+
+void CMyFulDeviceMap::SetMaxEncChnNum(u32 dwMaxEncChnNum)
+{
+	m_dwMaxEncChnNum = dwMaxEncChnNum;
+}
+
+bool CMyFulDeviceMap::IsEncChnNumOutOfRange()
+{
+#ifdef LICENSE
+	return m_dwCurEncChnNum >= m_dwMaxEncChnNum;
+#else
+	return false;
+#endif
+}
+
+bool CMyFulDeviceMap::Insert(const std::string & parentId, const std::string & protoId)
+{
+	if (parentId.empty() || protoId.empty())
+	{
+		GLOBELOG(ERROR_LEV, "parentId and ProtoId can't be empty!\n");
+		return false;
+	}
+
+	if (parentId  == protoId)
+	{
+		GLOBELOG(ERROR_LEV, "parentId is equals ProtoId \n");
+		return false;
+	}
+
+	m_mapParent2Child.insert(std::make_pair(protoId, std::set<std::string>()));
+
+	if (parentId != "unknow")
+	{
+		auto finder = m_mapParent2Child.find(parentId);
+		if (finder != m_mapParent2Child.end())
+		{
+			finder->second.insert(protoId);
+		}
+		else
+		{
+			std::set<std::string> chset{ protoId };
+			m_mapParent2Child.insert(std::make_pair(parentId, std::move(chset)));
+		}
+	}
+
+
+	return true;
+}
+
+std::list<std::string> CMyFulDeviceMap::Delete(const std::string & parentId, const std::string & protoId)
+{
+	auto devFinder = m_mapParent2Child.find(protoId);
+	if (devFinder == m_mapParent2Child.end())
+	{
+		return std::list<std::string>();
+	}
+	
+	if (parentId != "unknow")
+	{
+		auto parFinder = m_mapParent2Child.find(parentId);
+		if (parFinder != m_mapParent2Child.end())
+		{
+			parFinder->second.erase(protoId);
+		}
+	}
+
+
+	std::set<std::string> childs = std::move(devFinder->second);
+	m_mapParent2Child.erase(devFinder);
+	
+	std::list<std::string> lstRet{ protoId };
+	for (auto& it : childs)
+	{
+		lstRet.splice(lstRet.end(), Delete(protoId, it));
+	}
+
+	return lstRet;
+}
+
+bool CMyFulDeviceMap::Update(const std::string & protoId, const std::string & OldparentId, const std::string & NewparentId)
+{
+	if (protoId.empty())
+	{
+		return false;
+	}
+
+	if (OldparentId == NewparentId)
+	{
+		return false;
+	}
+
+	auto OldParentFinder = m_mapParent2Child.find(OldparentId);
+	if (OldParentFinder == m_mapParent2Child.end())
+	{
+		return false;
+	}
+
+	
+	auto NewParentFinder = m_mapParent2Child.find(NewparentId);
+	if (NewParentFinder == m_mapParent2Child.end())
+	{
+		m_mapParent2Child.insert(std::make_pair(NewparentId, std::set<std::string>{protoId}));
+	}
+	else
+	{
+		NewParentFinder->second.insert(protoId);
+	}
+	
+
+	OldParentFinder->second.erase(protoId);
+	return true;
+}
+
+std::list<std::string> CMyFulDeviceMap::GetChilds(const std::string & parentId)
+{
+	std::list<std::string> lstRet;
+	auto finder = m_mapParent2Child.find(parentId);
+	if (finder != m_mapParent2Child.end())
+	{
+		std::copy(finder->second.begin(), finder->second.end(), std::back_inserter(lstRet));
+	}
+	return lstRet;
+}
+
