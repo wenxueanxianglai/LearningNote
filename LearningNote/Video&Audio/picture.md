@@ -23,10 +23,12 @@ YUV就表达了这些颜色
 ```
 
 ### 更具体的：
-大佬链接: https://www.cnblogs.com/blogs-of-lxl/p/10839053.html
-* **Y** ： 亮度(灰阶值)
-* **U** ： 色度
-* **V** ： 浓度
+大佬链接: https://www.cnblogs.com/zoneofmine/p/10834758.html
+* **Y** ： 表示明亮度（Luminance、Luma）
+* **U** ： 色度  : 蓝色通道
+* **V** ： 色度  : 红色通道
 
-
+Y 通道数值越高，图片则越亮
+U 通道数值越高，颜色就越接近蓝色
+V 通道数值越高，颜色就越接近红色
 ---
