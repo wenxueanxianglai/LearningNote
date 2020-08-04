@@ -32,3 +32,27 @@ Y 通道数值越高，图片则越亮
 U 通道数值越高，颜色就越接近蓝色
 V 通道数值越高，颜色就越接近红色
 ---
+
+
+### 代码上
+https://blog.csdn.net/leixiaohua1020/article/details/50534150
+#### YUV编码的存储格式
+大佬给出的例子，getY getU getV 这些栗子说明了YUV的存储格式， 这里结论是：
+```
+yuv 的一种存放格式:
+
+所有的 Y 分量  | 所有的 U分量 | 所有的 V分量
+
+```
+
+##### YUV 420 与 YUV444 的对比
+存储格式上:
+* YUV420p 的 Y : U : V  = 4 : 1 : 1
+* YUV444  的 Y : U : V  = 4 : 4 : 4 （就是 1比1比1）
+
+#### 验证YUV
+##### get_simplest_Gray
+去掉颜色， 则就是将 U分量 和 V分量 给当0; 
+
+##### get_halfy
+##### get_border
