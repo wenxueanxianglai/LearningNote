@@ -9,3 +9,12 @@ ss << std::put_time(std::localtime(&cNow), "%Y-%m-%d-%H-%M-%S");
 std::string strNowTime;
 ss >> strNowTime;
 ```
+
+```cpp
+uint64_t GetCurrentTimeMillis()
+{
+	steady_clock::duration d = system_clock::now().time_since_epoch();
+	milliseconds mic = duration_cast<milliseconds>(d);
+	return mic.count();
+}
+```
