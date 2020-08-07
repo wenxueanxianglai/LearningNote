@@ -116,3 +116,38 @@ find(node, object)
   return node;          condition: node == obj
   find(node->child, obj)  condition: node != obj
 ```
+---
+## 插入
+### 如何指定 新结点位置？
+* 树是非线性的， 无法采用下标的形式 定位数据元素
+* 每个树节点 都有 一个 前驱节点
+* 必须先找到 **前驱节点** ， 才能完成新节点的插入
+
+---
+## 清除
+### 清除操作功能的定义
+#### free(node)
+* 清除 node 为 根结点的树
+* 释放树中的每一个结点
+
+```
+free(node):
+  return;       condition: node ==nullptr
+
+  free(node->child);    condition: node != nullptr
+  delete node;        
+```
+
+### 问题：
+当树中的结点可能来源于不同的存储空间，如何判断堆空间中的结点并释放？
+
+#### 分析
+* 单凭 内存地址 **很难准确判断** 具体的存储区域
+* 只有 **堆空间** 的内存 需要主动 释放(delete)
+* 清除操作时 只需要 对 堆中的结点进行释放
+
+#### 解决方案： 工厂模式
+* 在 GTreeNode 中 增加保护成员变量 m_flag
+* 在GTreeNode 中的 operator new 重载为保护成员函数
+* 提供工厂方法 GTreeNode<T>* NewNode() ->静态成员函数
+* 在工厂方法中 new 新结点 并 将 m_flag 设置为true；
