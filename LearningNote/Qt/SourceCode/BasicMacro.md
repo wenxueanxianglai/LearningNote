@@ -116,3 +116,35 @@ friend class QListView;
 # define QT_BEGIN_NAMESPACE namespace QT_NAMESPACE {
 # define QT_END_NAMESPACE }
 ```
+
+
+---
+## 简单的 set get
+```cpp
+#define _Set_Get_Func( keyType , KeyWord )	\
+void Set##KeyWord ( keyType const& o##KeyWord ) {	\
+	KeyWord = o##KeyWord; \
+} \
+keyType& Get##KeyWord() { \
+	return KeyWord;\
+}\
+keyType const& Get##KeyWord() const { \
+	return KeyWord;\
+}\
+
+
+
+#define Set_Get_Func(KeyWord) \
+template <typename T>\
+void Set##KeyWord(T const& o##KeyWord)\
+{\
+	KeyWord = o##KeyWord;\
+}\
+decltype(KeyWord)&  Get##KeyWord() { \
+	return KeyWord;\
+}\
+const decltype(KeyWord)&  Get##KeyWord() const {	\
+		return KeyWord; \
+}\
+
+```
