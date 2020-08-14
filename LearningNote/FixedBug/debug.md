@@ -36,3 +36,20 @@ http://www.360doc.com/content/19/0709/20/49851048_847709368.shtml
 http://www.xszydq.com/17705.html
 
 http://itbook.top/tag/18
+
+
+2.查找僵尸进程
+
+
+
+ps -A -o stat,ppid,pid,cmd | grep -e '^[Zz]'
+
+
+
+
+
+3.批量清理僵尸进程
+
+
+
+ps -A -o stat,ppid,pid,cmd | grep -e '^[Zz]' | awk '{print $2}' | xargs kill -9
