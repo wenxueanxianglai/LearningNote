@@ -1,4 +1,15 @@
 # python
+## 是什么
+省劲
+效率
+
+找包  找别人写好的库
+
+胶水语言
+
+交际花
+
+
 ## 在哪里下载？
 https://www.python.org/downloads/
 
