@@ -4,6 +4,7 @@ using namespace std;
 
 int main()
 {
+    const char* fd = "sdfsd";
     auto cha = 'a';     // 字符
     auto cha1 = L'a';    // 宽字符 
     auto cha2 = "a";       //字符串
@@ -25,9 +26,13 @@ int main()
     auto x2 = 10.;          // double
     auto x3 = 10e-2;        // double
 
+   // auto& t;
+    auto& tr = na;
 
     cout << "2M\n";
     cout << 2 << '\t' << "M\n";
+
+
 
     return 0;
 }
