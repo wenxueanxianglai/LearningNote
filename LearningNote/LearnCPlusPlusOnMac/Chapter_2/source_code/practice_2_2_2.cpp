@@ -5,7 +5,7 @@ or a definition
 
 #include <iostream>
 extern int ix = 1024;   // definition
-int iy; //  declaration
+int iy; //  declaration     //定义
 extern int iz;  // declaration
 
 int main()
