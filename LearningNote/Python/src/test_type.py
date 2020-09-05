@@ -14,3 +14,8 @@ irest = int(str2int)
 
 print(type(str2int))
 print(type(irest))
+
+
+# bool
+bflag = True
+print(bflag, type(bflag))

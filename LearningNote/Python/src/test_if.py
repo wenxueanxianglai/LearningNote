@@ -6,3 +6,6 @@ elif num >= 0 and num < 10:
     print("this number is ", num)
 else:
     print("undefine\n")
+
+if num:
+    print("not zero")
