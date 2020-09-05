@@ -5,4 +5,7 @@ for lan in d:
 
 bf = 'cpp' in d
 
+if bf : 
+    print('here is cpp!')
+
 print(bf)
