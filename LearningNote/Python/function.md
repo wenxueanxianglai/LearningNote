@@ -9,7 +9,7 @@
 
 ## 如何自定义
 ```
-def  <function_name> :
+def  <function_name>() :
     <function_body>
 ```
 

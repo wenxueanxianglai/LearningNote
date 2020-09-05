@@ -1,5 +1,5 @@
 # 简单的1+。。100之类的
-def test_accum(x):
+def test_accum(x) -> int:
     if x <= 0:
         print('Error!')
         return 
