@@ -10,8 +10,8 @@ const { join } = require('path');
        // `--use-fake-ui-for-media-stream`,     // 配合上面的
         `--no-sandbox`
         ],
-        ignoreHTTPSErrors: true,
-        headless: false
+        ignoreHTTPSErrors: true,                // 这个也是解决证书错误的
+        headless: false                         
         // defaultViewport:{
         //     width: 1000,
         //     height: 800
