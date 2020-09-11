@@ -32,14 +32,15 @@ const { join } = require('path');
     const page = await browser.newPage();
     
     // 3. page 跳转到 https://192.168.1.119:3000/
-      //await page.goto('https://www.baidu.com/');
+     
 
       page.on('dialog', async dialog => {
         console.log(dialog.message);
         await dialog.accept();
     });
     await page.tracing.start({path: './trace.json'});
-    await page.goto('https://192.168.1.119:3000/');
+    //await page.goto('https://192.168.1.119:3000/');
+    await page.goto('https://www.baidu.com/');
     console.log('page open succ!')  
     await page.tracing.stop();
     //let video = page.$eval('video');
