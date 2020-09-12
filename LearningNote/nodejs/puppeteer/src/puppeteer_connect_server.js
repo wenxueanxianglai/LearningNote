@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer');
 const path = require('path');
 
 let vi_path = path.resolve('./testfile/video_test.y4m');
+//let vi_path = path.resolve('./testfile/test_h264.y4m');
 console.log('video path: ' + vi_path);
 
 let au_path = path.resolve('./testfile/audio_test.wav');
@@ -40,9 +41,20 @@ console.log('audio path: ' + au_path);
   //  await page.tracing.stop();
 
 
-    // setTimeout(() => {
-    //     browser.close();
-    // }, 5000);
+
+
+  // page2 = await browser.newPage();
+  // await page2.goto('https://192.168.1.119:3000/');
+  // console.log('page2 open succ!'); 
+  
+//  console.log(val)
+    //  setTimeout( async () => {
+    //     return;
+    //     const page2 = await browser.newPage();
+    //     await page2.goto('https://192.168.1.119:3000/');
+    //   //  await page.goto('https://192.168.1.119:3000/');
+    //    // browser.close();
+    // }, 10000);
 
  
 
