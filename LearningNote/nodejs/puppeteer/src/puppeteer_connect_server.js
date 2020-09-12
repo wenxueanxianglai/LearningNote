@@ -41,11 +41,22 @@ console.log('audio path: ' + au_path);
   //  await page.tracing.stop();
 
 
+  let vctPage=[];
+  for(let i=0; i<10; ++i) {
+     const va = await browser.newPage();
+    console.log('page %d create!', i);
+
+    await va.goto('https://192.168.1.119:3000/'); 
+    console.log('page %d open succ!', i); 
+
+    vctPage.push(va);
+  }
 
 
-  // page2 = await browser.newPage();
-  // await page2.goto('https://192.168.1.119:3000/');
-  // console.log('page2 open succ!'); 
+
+  page2 = await browser.newPage();
+  await page2.goto('https://192.168.1.119:3000/');
+  console.log('page2 open succ!'); 
   
 //  console.log(val)
     //  setTimeout( async () => {
