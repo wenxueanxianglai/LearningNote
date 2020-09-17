@@ -1,7 +1,7 @@
 # selenium
 ---
 ## link
-https://blog.csdn.net/qq_37546891/article/details/79038559 
+https://blog.csdn.net/qq_37546891/article/details/79038559
 
 
 ---
@@ -15,7 +15,7 @@ https://blog.csdn.net/qq_37546891/article/details/79038559
 
 
 ## 安装步骤：
-### client 安装 
+### client 安装
 就是 webdriver 安装
 ```
 npm i selenium-webdriver@3.6.0
@@ -44,3 +44,21 @@ https://www.cnblogs.com/hanxiaobei/p/7352794.html
 
 
 http://www.voidcn.com/article/p-qtkihoyu-bvu.html
+
+#### 已完成
+调通 client端 向 grid hub节点发送脚本， grid hub 执行。
+
+#### 尚未解决
+如何 通过 js 获取所有的node节点
+如果通过获取的node节点去 精准控制
+
+#### 意外遇到的问题
+当前尚未搜索到能够行之有效的方法
+
+```
+cannot reach the node for 2 tries
+```
+node显示：
+```
+01:53:39.064 INFO [SelfRegisteringRemote$1.run] - Couldn't register this node: The hub is down or not responding: Failed to connect to /192.168.0.105:4444
+```
