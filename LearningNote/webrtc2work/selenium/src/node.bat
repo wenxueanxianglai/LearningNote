@@ -1,2 +1,2 @@
-java -Dwebdriver.chrome.driver=chromedriver.exe -jar selenium-server-standalone.jar -role node -nodeConfig node1Config.json
+java -jar selenium-server-standalone-3.141.59.jar -role node -nodeConfig node.json
   
