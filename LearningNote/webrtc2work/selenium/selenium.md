@@ -82,3 +82,49 @@ node 显示：
 https://github.com/SeleniumHQ/selenium/blob/selenium-3.141.59/java/server/src/org/openqa/grid/common/defaults/DefaultNodeWebDriver.json
 
 https://github.com/SeleniumHQ/selenium/tree/selenium-3.141.59/java/server/src/org/openqa/grid/common/defaults
+
+
+---
+##  test
+使用 usingServer 可以直接控制driver
+
+
+"http://"
+
+setInitParameter
+
+
+http://192.168.0.101:4444/grid/api/hub
+http://192.168.0.101:4444/grid/api/proxy
+http://192.168.0.101:4444/grid/console
+
+
+
+---
+## 任务
+搜索：如何 通过 selenium的库 获取具体的 node 节点
+搜索结果： 目前没有接口
+```
+原因：
+selenium 每实例化一个 driver 实际上 对应的就是一个真实的浏览器
+
+而 selenuim - grid 的主要功能是 向下方 node 分发 这些请求。
+ 但并未对外暴露接口
+```
+
+## 解决方案
+#### 解决 1：
+ 1. 在开始部署的时候： 在client端保存node节点的 ip
+
+#### 解决 2：
+ 2. 直接把远端所有的当成原始服务器
+
+
+## 考虑场景
+##### 如果仅针对  **随机的用户** 发言来说：
+可以不需要获取特定的node
+
+* 原因： 因为 每个 driver 对应一个 浏览器，当每个用户对应一个driver的时候，这里就是很明显的一对一
+
+##### 如果 一组用户都在同一台测试机上
+selenium-driver 可以直接 指定  当前测试机器的 ip，作为远端server

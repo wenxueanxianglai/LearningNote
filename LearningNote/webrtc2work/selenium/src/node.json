@@ -33,7 +33,7 @@
     "port": -1,
     "register": true,
     "registerCycle": 5000,
-    "hub": "http://localhost:4444",
+    "hub": "http://192.168.0.101:4444",
     "nodeStatusCheckTimeout": 5000,
     "nodePolling": 5000,
     "role": "node",
