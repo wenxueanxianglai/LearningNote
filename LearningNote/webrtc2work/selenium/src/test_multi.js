@@ -17,12 +17,23 @@ const { hubHost } = require("./selenium_cofig");
   function sendfunc(a) {
     alert(a);
   }
-  // console.log(sendfunc.toString());
+
   console.log(sendfunc.toString());
   for (iter in arrDriver) {
     await arrDriver[iter].get("http://www.baidu.com/");
-    arrDriver[iter].executeScript(
-      sendfunc.toString() + "sendfunc(" + iter + ");"
-    );
+    await arrDriver[iter]
+      .findElement(webdriver.By.id("kw"))
+      .sendKeys("ndoe" + iter);
+
+    // await arrDriver[iter].findElement(webdriver.By.id("su")).click();
+    //   await arrDriver[iter].findElement()
+    // arrDriver[iter].executeScript(
+    //   sendfunc.toString() + "sendfunc(" + iter + ");"
+    // );
+  }
+
+  await arrDriver[0].sleep(13000);
+  for (iter in arrDriver) {
+    await arrDriver[iter].quit();
   }
 })();
