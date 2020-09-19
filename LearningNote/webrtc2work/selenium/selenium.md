@@ -133,3 +133,12 @@ selenium 每实例化一个 driver 实际上 对应的就是一个真实的浏�
 ##### 如果 一组用户都在同一台测试机上
 
 selenium-driver 可以直接 指定 当前测试机器的 ip，作为远端 server
+
+
+---
+## 任务
+已完成： 部署多台node 测试 控制不同的driver
+
+正在学习： driver 尝试控制 页面元素
+
+待研究： 尝试不同方式启动 selenium 是否能够让 driver 同时启动快一点
