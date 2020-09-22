@@ -8,6 +8,7 @@ class Student {
     }
 }
 
+
 class PrimaryStudent extends Student {
     constructor(name, grade) {
         super(name);        // 调用父类的构造方法
