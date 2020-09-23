@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 
 //readFile( path, CallBack)
-fs.readFile('../fixbug.md', function(error, data){
+fs.readFile('./www/test.txt', function(error, data){
     if(error) {
         console.log('read File failed');
     }else {
