@@ -6,7 +6,6 @@ class PmQLType{
     toString() {
         if (this._name.length > 0)
             console.log('ssda');
-        else
     }
 }
 
