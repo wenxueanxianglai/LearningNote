@@ -13,6 +13,8 @@ let wwr = {
 let arrwr = [wr, wwr ];
 console.log(arrwr);
 
+arrwr.length
+
 let index_0 = arrwr.findIndex(function (elem) {
     return elem.id == '1234'
 })

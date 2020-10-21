@@ -35,28 +35,28 @@ console.log('audio path: ' + au_path);
      
    // await page.tracing.start({path: './trace.json'});
     //await page.goto('file:///D:/git_note/LearningNote/LearningNote/nodejs/src/www/test_camera.html');
-    await page.goto('https://192.168.1.119:3000/');
+    await page.goto('https://brtc.butel.com:31001/meetingconnect/');
     //await page.goto('https://www.baidu.com/');
     console.log('page open succ!')  
   //  await page.tracing.stop();
 
 
-  let vctPage=[];
-  for(let i=0; i<10; ++i) {
-     const va = await browser.newPage();
-    console.log('page %d create!', i);
+  // let vctPage=[];
+  // for(let i=0; i<10; ++i) {
+  //    const va = await browser.newPage();
+  //   console.log('page %d create!', i);
 
-    await va.goto('https://192.168.1.119:3000/'); 
-    console.log('page %d open succ!', i); 
+  //   await va.goto('https://192.168.1.119:3000/'); 
+  //   console.log('page %d open succ!', i); 
 
-    vctPage.push(va);
-  }
+  //   vctPage.push(va);
+  // }
 
 
 
-  page2 = await browser.newPage();
-  await page2.goto('https://192.168.1.119:3000/');
-  console.log('page2 open succ!'); 
+  // page2 = await browser.newPage();
+  // await page2.goto('https://192.168.1.119:3000/');
+  // console.log('page2 open succ!'); 
   
 //  console.log(val)
     //  setTimeout( async () => {
