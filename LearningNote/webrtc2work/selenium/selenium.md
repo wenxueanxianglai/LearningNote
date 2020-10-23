@@ -142,3 +142,9 @@ selenium-driver 可以直接 指定 当前测试机器的 ip，作为远端 serv
 正在学习： driver 尝试控制 页面元素
 
 待研究： 尝试不同方式启动 selenium 是否能够让 driver 同时启动快一点
+
+## 参数
+---
+```
+disable-infobars
+```
