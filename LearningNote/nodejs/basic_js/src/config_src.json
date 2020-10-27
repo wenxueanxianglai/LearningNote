@@ -1,0 +1,59 @@
+{
+    "server" : "http://localhost:4444/wd/hub",
+    "oldurl": "https://brtc.butel.com:31001/meetingconnect/",
+    "url": "file:///D:/test/test/index.html",
+    "arrMeeting" : [
+        "50019157",
+        "10019158",
+        "20019159",
+        "80019160",
+        "40019161",
+        "20019162",
+        "50019163", 
+        "60019164",
+        "40019165"
+    ],
+    "pageSet": [
+        {
+            "getwayIP"  : "brtc.butel.com",
+            "port"  : "3000",
+            "userName"  : "15500010105",
+            "password"  : "123456",
+            "meetingID" : "50019157",
+            "isSpeak" : 1
+        },
+        {
+            "getwayIP"  : "brtc.butel.com",
+            "port"  : "3000",
+            "userName"  : "15500010105",
+            "password"  : "123456",
+            "meetingID" : "50019157",
+            "isSpeak" : 1
+        },
+        {
+            "getwayIP"  : "brtc.butel.com",
+            "port"  : "3000",
+            "userName"  : "15500010106",
+            "password"  : "123456",
+            "meetingID" : "50019157",
+            "isSpeak" : 1
+        },
+        {
+            "getwayIP"  : "brtc.butel.com",
+            "port"  : "3000",
+            "userName"  : "15500010107",
+            "password"  : "123456",
+            "meetingID" : "50019157",
+            "isSpeak" : 1
+        },
+        {
+            "getwayIP"  : "brtc.butel.com",
+            "port"  : "3000",
+            "userName"  : "15500010108",
+            "password"  : "123456",
+            "meetingID" : "50019157",
+            "isSpeak" : 1
+        }
+      
+    ]
+}
