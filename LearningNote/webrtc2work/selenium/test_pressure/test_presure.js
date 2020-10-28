@@ -5,9 +5,10 @@ var config = require("./config");
 const webdriver = require("selenium-webdriver");
 const chrome = require("selenium-webdriver/chrome");
 
+const { devReport, gateway } = require('./dev_report');
+
 let vi_path = path.resolve("C://drive_path/testfile/video_test.y4m");
 let au_path = path.resolve("C://drive_path/testfile/audio_test.wav");
-
 
 let chromeOption = new chrome.Options();
 chromeOption.addArguments("--no-sandbox");
@@ -19,7 +20,7 @@ chromeOption.addArguments("--use-fake-device-for-media-stream");
 chromeOption.addArguments("--use-fake-ui-for-media-stream");
 chromeOption.addArguments("--use-file-for-fake-video-capture=" + vi_path);
 chromeOption.addArguments("--use-file-for-fake-audio-capture=" + au_path);
-chromeOption.addArguments("--headless");
+//chromeOption.addArguments("--headless");
 chromeOption.addArguments("--enable-automation");
 
 class testPresure {
@@ -32,12 +33,15 @@ class testPresure {
 
     this.url = new nUrl.URL(config.url);
     for (let i in jsonElement) {
-      tUrl.searchParams.append(i, element[i]);
+      this.url.searchParams.append(i, jsonElement[i]);
     }
+
+    this.info = jsonElement;
+    this._devReport = new devReport();
   }
 
-  onClose() {
-    this.driver.close();
+  async close() {
+    await this.driver.close();
   }
 
   async testStart() {
@@ -45,8 +49,8 @@ class testPresure {
     await this.driver.sleep(4000);
   }
 
-  async getStat() {
-    let result = await mdriver.executeScript("return window.mettingStaus");
+  async getStat() { 
+    let result = await this.driver.executeScript("return window.mettingStaus");
     return result;
   }
 
@@ -62,11 +66,51 @@ class testPresure {
     return 1 === speakState;
   }
 
-  report() {
-      //TODO 添加上报数据
+  async report() {
+    //TODO 添加上报数据
+    // let ret = await this.getStat();
+    // console.log(ret);
+  
+    let ret = await this.getStat();
+    console.log(ret);
+    this._devReport.collect(ret);
+  
+   // return ret;
+    
   }
 
-  run() {
-
+  async run(timeout) {
+    let interval = setInterval(
+      () => {
+        if (this.driver != null) {
+          this.report();
+        } 
+      }, 1000
+    ); 
+    setTimeout(async () => {
+      await clearInterval(interval);
+      await this.close();
+      this.driver = null;
+    }, timeout * 1000);
   }
 }
+
+// export
+exports.testPresure = testPresure;
+
+// test
+async function test_sample() {
+  let oneInst = new testPresure({
+    userName: "15500010107",
+    password: "123456",
+    getwayIP: "brtc.butel.com",
+    port: "3000",
+    meetingID: "90019168",
+    isSpeak: 1,
+  });
+
+  await oneInst.testStart();
+  oneInst.run(20);
+}
+
+//test_sample();

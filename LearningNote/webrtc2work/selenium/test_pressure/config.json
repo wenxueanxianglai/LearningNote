@@ -1,7 +1,7 @@
  {
     "server" : "http://localhost:4444/wd/hub",
     "oldurl": "https://brtc.butel.com:31001/meetingconnect/",
-    "url": "file:///D:/test/test/index.html",
+    "url": "file://D:/test_selenium/test/index.html",
     "arrMeeting" : [
         "50019157",
         "10019158",
