@@ -1,6 +1,7 @@
 const fs = require("fs");
+ //["90019168", "40019166", "60019167", "90019169", "60019170", "50019171", "90019173", "70019172", "30019174"]
+const arrMeeting = ["90019168", "40019166", "60019167", "90019169", "60019170", "50019171", "90019173", "70019172", "30019174"];
 
-const arrMeeting = ["90019168", "40019166", "60019167"];
 const defaultGateWayIp = "172.17.201.177";
 const defaultPort = "20045";
 const personPerMeeting = 9;
@@ -14,7 +15,9 @@ class creatJson {
   }
 
   build(fileName, newGateway, newPort) {
-    let bTwoGateway = !(!!(typeof newGateway == "undefined") || !!(typeof newPort == "undefined"));
+    let bTwoGateway = !(
+      !!(typeof newGateway == "undefined") || !!(typeof newPort == "undefined")
+    );
     for (
       let iter = this.begin, curMeetNumer = 1;
       iter < this.end;
@@ -26,8 +29,9 @@ class creatJson {
         getwayIP: defaultGateWayIp,
         port: defaultPort,
         meetingID: "90019168",
-          isSpeak: 1,
-        level: 3
+        isSpeak: 1,
+        level: 3,
+        perSDK: 1,
       };
 
       if (arrMeeting.length * personPerMeeting >= curMeetNumer) {
@@ -49,7 +53,7 @@ class creatJson {
     }
 
     if (!(typeof fileName == "undefined")) {
-        this.saveAs(fileName);
+      this.saveAs(fileName);
     }
   }
 
@@ -64,14 +68,14 @@ class creatJson {
 }
 
 function test_sample() {
-    let testSample = new creatJson(10106, 10200);
-    testSample.build("sample_json.json");
+  let testSample = new creatJson(10106, 10200);
+  testSample.build("sample_json.json");
 }
 
 function test_twoGateWay() {
-    let testTwo = new creatJson(10106, 10200);
-    testTwo.build("two_gateway.json", "192.168.1.155", "3000");
+  let testTwo = new creatJson(10106, 10200);
+  testTwo.build("two_gateway.json", "brtc.butel.com", "3000");
 }
-test_sample();
 
-//test_twoGateWay();
+test_sample();
+test_twoGateWay();

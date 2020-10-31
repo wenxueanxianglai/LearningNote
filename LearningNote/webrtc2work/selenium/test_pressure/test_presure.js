@@ -5,9 +5,9 @@ var config = require("./config");
 const webdriver = require("selenium-webdriver");
 const chrome = require("selenium-webdriver/chrome");
 
-const { devReport, gateway } = require('./dev_report');
+const { devReport, gateway } = require("./dev_report");
 
-let vi_path = path.resolve("C://drive_path/testfile/video_test.y4m");
+let vi_path = path.resolve("C://drive_path/testfile/222.y4m"); //video_test.y4m
 let au_path = path.resolve("C://drive_path/testfile/audio_test.wav");
 
 let chromeOption = new chrome.Options();
@@ -45,11 +45,32 @@ class testPresure {
   }
 
   async testStart() {
+    let i = 0;
     await this.driver.get(this.url);
-    await this.driver.sleep(4000);
+    await new Promise((resolve) => {
+      let id = setInterval(async () => {
+        let state = await this.getStat();
+        i++;
+        console.log(this.info.userName, "setInterval state", state);
+        if (state?.joinState === 1) {
+          clearInterval(id);
+          console.log(this.info.userName, "succ!");
+          await this.driver.sleep(1000);
+          resolve();
+        } else if (state?.joinState === -1) {
+          console.log(this.info.userName, "failed:-1!");
+          resolve(-1);
+        } else {
+          if (i > 9) {
+            console.log(this.info.userName, "failed!");
+            resolve(-1);
+          }
+        }
+      }, 500);
+    });
   }
 
-  async getStat() { 
+  async getStat() {
     let result = await this.driver.executeScript("return window.mettingStaus");
     return result;
   }
@@ -70,23 +91,18 @@ class testPresure {
     //TODO 添加上报数据
     // let ret = await this.getStat();
     // console.log(ret);
-  
+
     let ret = await this.getStat();
     console.log(ret);
-    this._devReport.collect(ret);
-  
-   // return ret;
-    
+    //this._devReport.collect(ret);
   }
 
   async run(timeout) {
-    let interval = setInterval(
-      () => {
-        if (this.driver != null) {
-          this.report();
-        } 
-      }, 1000
-    ); 
+    let interval = setInterval(() => {
+      if (this.driver != null) {
+        this.report();
+      }
+    }, 3000);
     setTimeout(async () => {
       await clearInterval(interval);
       await this.close();
