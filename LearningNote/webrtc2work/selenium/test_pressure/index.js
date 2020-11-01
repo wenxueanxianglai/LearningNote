@@ -57,7 +57,7 @@ async function test_sample() {
     }
   }, 10000);
 
-  await WaitMs(10000);
+//  await WaitMs(10000);
   //oneInst.run(300000);
   //await arr[0].close();
 }
