@@ -1,0 +1,94 @@
+{
+  "pageSet": [
+    {
+      "userName": "15500010080",
+      "password": "123456",
+      "getwayIP": "172.17.201.205",
+      "port": "20045",
+      "meetingID": "80019261",
+      "isSpeak": 1,
+      "level": 3,
+      "perSDK": 1
+    },
+    {
+      "userName": "15500010081",
+      "password": "123456",
+      "getwayIP": "172.17.201.205",
+      "port": "20045",
+      "meetingID": "80019261",
+      "isSpeak": 1,
+      "level": 3,
+      "perSDK": 1
+    },
+    {
+      "userName": "15500010082",
+      "password": "123456",
+      "getwayIP": "172.17.201.205",
+      "port": "20045",
+      "meetingID": "80019261",
+      "isSpeak": 1,
+      "level": 3,
+      "perSDK": 1
+    },
+    {
+      "userName": "15500010083",
+      "password": "123456",
+      "getwayIP": "172.17.201.205",
+      "port": "20045",
+      "meetingID": "80019261",
+      "isSpeak": 1,
+      "level": 3,
+      "perSDK": 1
+    },
+    {
+      "userName": "15500010084",
+      "password": "123456",
+      "getwayIP": "172.17.201.205",
+      "port": "20045",
+      "meetingID": "80019261",
+      "isSpeak": 1,
+      "level": 3,
+      "perSDK": 1
+    },
+    {
+      "userName": "15500010085",
+      "password": "123456",
+      "getwayIP": "172.17.201.205",
+      "port": "20045",
+      "meetingID": "80019261",
+      "isSpeak": 1,
+      "level": 3,
+      "perSDK": 1
+    },
+    {
+      "userName": "15500010086",
+      "password": "123456",
+      "getwayIP": "172.17.201.205",
+      "port": "20045",
+      "meetingID": "80019261",
+      "isSpeak": 1,
+      "level": 3,
+      "perSDK": 1
+    },
+    {
+      "userName": "15500010087",
+      "password": "123456",
+      "getwayIP": "172.17.201.205",
+      "port": "20045",
+      "meetingID": "80019261",
+      "isSpeak": 1,
+      "level": 3,
+      "perSDK": 1
+    },
+    {
+      "userName": "15500010088",
+      "password": "123456",
+      "getwayIP": "172.17.201.205",
+      "port": "20045",
+      "meetingID": "80019261",
+      "isSpeak": 1,
+      "level": 3,
+      "perSDK": 1
+    }
+  ]
+}

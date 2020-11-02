@@ -38,8 +38,7 @@ class creatJson {
         port: defaultPort,
         meetingID: "90019168",
         isSpeak: 1,
-        level: 3,
-        perSDK: 1,
+        level: 3
       };
 
       if (this.meeting.length * personPerMeeting >= curMeetNumer) {

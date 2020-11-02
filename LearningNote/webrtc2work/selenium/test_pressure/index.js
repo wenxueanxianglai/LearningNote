@@ -32,22 +32,42 @@ async function test_sample() {
     process.exit();
   });
 
-  for (let i of sampleCfg.pageSet) {
-    if (flag) {
-      break;
-    }
-
-    if (arrArgs.length > 0) {
-      let meetingNum = arrArgs.indexOf(i.meetingID);
-      if (meetingNum < 0) {
-        continue;
+  await sampleCfg.pageSet.forEach(async element => {
+    return new Promise((resolve, reject) => {
+      if (flag) {
+        return resolve(-701);
       }
-    }
-    let oneInst = new testPresure(i);
-    arr.push(oneInst);
-    let ret = await oneInst.testStart();
-    console.log("meetingId:%s nube:%s ----ret:%d ", ret.m, ret.n, ret.ret);
-  }
+      if (arrArgs.length > 0) {
+        let meetingNum = arrArgs.indexOf(element.meetingID);
+        if (meetingNum < 0) {
+          return resolve(-702);
+        }
+      }
+      let oneInst = new testPresure(element);
+      arr.push(oneInst);
+      let ret = oneInst.testStart();
+      console.log("meetingId:%s nube:%s ----ret:%d ", ret.m, ret.n, ret.ret);
+      resolve(1);
+    });
+  });
+
+  // for (let i of sampleCfg.pageSet) {
+  //   if (flag) {
+  //     break;
+  //   }
+
+  //   if (arrArgs.length > 0) {
+  //     let meetingNum = arrArgs.indexOf(i.meetingID);
+  //     if (meetingNum < 0) {
+  //       continue;
+  //     }
+  //   }
+  //   let oneInst = new testPresure(i);
+  //   arr.push(oneInst);
+  //   let ret = await oneInst.testStart();
+  //   console.log("meetingId:%s nube:%s ----ret:%d ", ret.m, ret.n, ret.ret);
+  // }
+
   console.log("----ok");
   let interval = setInterval(() => {
     for (let i of arr) {
