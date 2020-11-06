@@ -42,31 +42,34 @@ class testPresure {
 
   async close() {
     await this.driver.close();
+	console.log("close");
   }
 
   async testStart() {
     let i = 0;
     await this.driver.get(this.url);
-    await new Promise((resolve) => {
+    return await new Promise((resolve) => {
       let id = setInterval(async () => {
         let state = await this.getStat();
         i++;
-        console.log(this.info.userName, "setInterval state", state);
+       // console.log(this.info.userName, "setInterval state", state?.joinState, state.nube);
         if (state?.joinState === 1) {
           clearInterval(id);
-          console.log(this.info.userName, "succ!");
-          await this.driver.sleep(1000);
-          resolve();
+       //   console.log(this.info.userName, "succ!");
+        //  await this.driver.sleep(1000);
+          resolve({ret:0, n:state?.nube, m:state?.meetingID});
         } else if (state?.joinState === -1) {
-          console.log(this.info.userName, "failed:-1!");
-          resolve(-1);
+        //  console.log(this.info.userName, "failed:-1!");
+		  clearInterval(id);
+          resolve({ret:-1, n:state?.nube, m:state?.meetingID});
         } else {
-          if (i > 9) {
-            console.log(this.info.userName, "failed!");
-            resolve(-1);
+          if (i > 60) {
+       //     console.log(this.info.userName, "failed!");
+			clearInterval(id);
+           resolve({ret:-2, n:state?.nube, m:state?.meetingID});
           }
         }
-      }, 500);
+      }, 100);
     });
   }
 
@@ -93,21 +96,23 @@ class testPresure {
     // console.log(ret);
 
     let ret = await this.getStat();
-    console.log(ret);
+    //console.log(ret);
     //this._devReport.collect(ret);
   }
 
-  async run(timeout) {
+  async run() {
+	  
     let interval = setInterval(() => {
       if (this.driver != null) {
         this.report();
       }
-    }, 3000);
-    setTimeout(async () => {
-      await clearInterval(interval);
-      await this.close();
-      this.driver = null;
-    }, timeout * 1000);
+    }, 10000);
+	
+    // setTimeout(async () => {
+      // await clearInterval(interval);
+      // await this.close();
+      // this.driver = null;
+    // }, timeout * 1000);
   }
 }
 
