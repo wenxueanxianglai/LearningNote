@@ -1,6 +1,9 @@
-const { group } = require('console');
+//const { group } = require('console');
+const sizeof = require('object-sizeof')
+
 let client = require('prom-client');
 let gateway = new client.Pushgateway('http://127.0.0.1:9091');
+
 // const collectDefaultMetrics = client.collectDefaultMetrics;
 // const Registry = client.Registry;
 // const register = new Registry();
@@ -10,16 +13,21 @@ console.log(client.name);
 gateway.name = 'ggggggg';
 
 
-const registry = new client.Registry();
+//const registry = new client.Registry();
 
 // just use gauge
+
 const gauge = new client.Gauge({
     name: 'test_metric_name',
     help: 'this value hahahahahaha',
     labelNames: ['test', 'myname']
 });
-gauge.labels(' testServer', 'zxp').set(664545); // Set to 10
+console.log('new gauge sizeof:', sizeof(gauge));
 
+gauge.labels(' testServer', 'zxp').set(664545); // Set to 10            
+console.log('new gauge sizeof:', sizeof(gauge));
+console.log('new gauge sizeof:', sizeof(gauge.hashMap));
+console.log('new gauge sizeof:', sizeof(gauge.hashMap.__proto__));
 gateway.pushAdd({ jobName: 'test', }, function (      // , groupings: {key : 'myname'}      // 这个就是label
     err,
     resp,
