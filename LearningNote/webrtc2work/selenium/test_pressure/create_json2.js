@@ -22,6 +22,16 @@ const arrMeeting = [
   "20019329",
   "80019330",
   "20019331",
+  "90019332",
+  "50019333",
+  "50019334",
+  "40019660",
+  "70019662",
+  "40019663",
+  "80019664",
+  "40019665",
+  "70019666",
+  "80019667",
 ];
 
 const defaultGateWayIp = "172.17.201.210";
@@ -93,9 +103,9 @@ class creatJson {
 }
 
 function test_sample() {
-  let testSample = new creatJson(arrMeeting, 10371,
-    10400);
-    testSample.build("172.17.201.177", defaultPort);
+  let testSample = new creatJson(arrMeeting, 10551,
+    10600);
+    testSample.build("172.17.201.210", defaultPort);
     testSample.saveAs("recv_json.json");
 }
 
