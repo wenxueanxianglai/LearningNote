@@ -25,7 +25,7 @@ async function test_sample() {
     flag = 1;
     let task = [];
     for (let i of arr) {
-      task.push(i?.close());
+     task.push(i?.close());
     }
 
     await Promise.all(task);
@@ -77,7 +77,7 @@ async function test_sample() {
   };
 
   await simpStart();
-  console.log("----ok");
+  console.log("----ok--- : ", new Date().toLocaleString());
   let interval = setInterval(() => {
     for (let i of arr) {
       if (i != null) {
@@ -86,7 +86,7 @@ async function test_sample() {
     }
   }, 10000);
 }
-// test_sample();
+ test_sample();
 
 // async function test_twogateway() {
 

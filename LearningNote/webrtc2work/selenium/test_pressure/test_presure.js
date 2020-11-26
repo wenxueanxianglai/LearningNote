@@ -7,8 +7,8 @@ const chrome = require("selenium-webdriver/chrome");
 
 const { devReport, gateway } = require("./dev_report");
 
-let vi_path = path.resolve("C://drive_path/testfile/222.y4m"); //video_test.y4m
-let au_path = path.resolve("C://drive_path/testfile/audio_test.wav");
+let vi_path = path.resolve("C://drive_path/testfile/" + config.videofile); //video_test.y4m
+let au_path = path.resolve("C://drive_path/testfile/" + config.audiofile);
 
 let chromeOption = new chrome.Options();
 chromeOption.addArguments("--no-sandbox");
@@ -18,9 +18,19 @@ chromeOption.addArguments("--no-default-browser-check");
 chromeOption.addArguments("--disable-popup-blocking"); //禁止弹出拦截
 chromeOption.addArguments("--use-fake-device-for-media-stream");
 chromeOption.addArguments("--use-fake-ui-for-media-stream");
-chromeOption.addArguments("--use-file-for-fake-video-capture=" + vi_path);
-chromeOption.addArguments("--use-file-for-fake-audio-capture=" + au_path);
-//chromeOption.addArguments("--headless");
+
+if(config.videofile !== "") {
+	chromeOption.addArguments("--use-file-for-fake-video-capture=" + vi_path);
+}
+
+if(config.audiofile !== "") {
+	chromeOption.addArguments("--use-file-for-fake-audio-capture=" + au_path);
+}
+
+if(config.headless == true) {
+	chromeOption.addArguments("--headless");
+}
+
 chromeOption.addArguments("--enable-automation");
 
 class testPresure {

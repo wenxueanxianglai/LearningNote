@@ -1,5 +1,5 @@
 let { testPresure } = require("./test_presure");
-const sampleCfg = require("./recv");
+const recvCfg = require("./recv_json");
 
 
 async function WaitMs(timeoutMs) {
@@ -33,7 +33,7 @@ let arrArgs = process.argv.splice(2);
     });
   
     let simpStart = async () => {
-      for (let i of sampleCfg.pageSet) {
+      for (let i of recvCfg.pageSet) {
         if (flag) {
           break;
         }
@@ -70,7 +70,7 @@ let arrArgs = process.argv.splice(2);
       };
   
       let startArr = [];
-      for (let i of sampleCfg.pageSet) {
+      for (let i of recvCfg.pageSet) {
         startArr.push(oneStart(i));
       }
       await Promise.all(startArr);
