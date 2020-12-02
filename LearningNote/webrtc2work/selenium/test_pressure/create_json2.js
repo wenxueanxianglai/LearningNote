@@ -65,10 +65,10 @@ class creatJson {
       let onePerson = {
         userName: "15500010105",
         password: "123456",
+        meetingID: "90019168",
         getwayIP: defaultGateWayIp,
         port: defaultPort,
-        meetingID: "90019168",
-        isSpeak: 1,
+        isSpeak: 0,
         level: 3,
       };
 
@@ -103,7 +103,7 @@ class creatJson {
 }
 
 function test_sample() {
-  let testSample = new creatJson(arrMeeting, 10551,
+  let testSample = new creatJson(arrMeeting, 10501,
     10600);
     testSample.build("172.17.201.210", defaultPort);
     testSample.saveAs("recv_json.json");
